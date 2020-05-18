@@ -58,7 +58,12 @@
 
   <script>
     function order() {
-      alert('주문이 되었습니다');
+      let input_name = $('#input_name').val();
+      let select_count = $('#select_count').val();
+      let input_addr = $('#input_addr').val();
+      let input_phone = $('#input_phone').val();
+
+      alert(input_name + select_count + input_addr + input_phone);
     }
   </script>
 
@@ -90,7 +95,7 @@
     <div class="order-box">
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">주문자 이름</span>
+          <span class="input-group-text" id="input_name">주문자 이름</span>
         </div>
         <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
       </div>
@@ -99,7 +104,7 @@
         <div class="input-group-prepend">
           <label class="input-group-text" for="inputGroupSelect01">수량</label>
         </div>
-        <select class="custom-select" id="inputGroupSelect01">
+        <select class="custom-select" id="select_count">
           <option selected>-- 수량을 선택하세요 --</option>
           <option value="1">one</option>
           <option value="2">two</option>
@@ -109,14 +114,14 @@
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">주소</span>
+          <span class="input-group-text" id="input_addr">주소</span>
         </div>
         <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
       </div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroup-sizing-default">전화번호</span>
+          <span class="input-group-text" id="input_phone">전화번호</span>
         </div>
         <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
       </div>
