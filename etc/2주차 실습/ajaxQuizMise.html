@@ -3,7 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>jQuery 연습, git에 잘 올라가나요?</title>
+    <title>jQuery 연습 Mise</title>
 
     <!-- jQuery를 import 합니다 -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -36,7 +36,7 @@
                         let gu_mise = rows[i]['IDEX_MVL'];
                         let temp_html = '';//temp_html을 if문 안에서 선언하면 if문 끝나면 사라져버림
                         
-                        if (gu_mise > 70) {
+                        if (gu_mise > 50) {
                             temp_html = `<li class="bad">${gu_name} : ${gu_mise}</li>`
                         }else{
                             temp_html = `<li>${gu_name} : ${gu_mise}</li>`
