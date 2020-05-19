@@ -58,29 +58,21 @@
     rel="stylesheet">
 
   <script>
-    function openclose(){
-      
-      if($('#order-box').css('display') == 'block'){
-        $('#order-box').hide();
-      }else{
-        $('#order-box').show();
-      }
-
-      let temp_html = `<button type="button">주문하기</button>`;
-
-      $('#button-line').append(temp_html);
-      
-
-    }
+    
 
 
     function order() {
-      let input_name = $('#input_name').val();
-      let select_count = $('#select_count').val();
-      let input_addr = $('#input_addr').val();
-      let input_phone = $('#input_phone').val();
+      let name = $('#input_name').val();
+      let count = $('#select_count').val();
+      let addr = $('#input_addr').val();
+      let phone = $('#input_phone').val();
+      if(name == ""||count == "-- 수량을 선택하세요 --"||addr==""||phone==""){
+        alert("작성이 완료되지 않았습니다.")
+      }else{
+        alert("주문정보 : "+name+" "+count+"개 "+addr+" "+phone)
+      }
 
-      alert(input_name + select_count + input_addr + input_phone);
+      
     }
   </script>
 
@@ -109,12 +101,12 @@
       <h6>에스프레소와 크림의 조합은 언제나 옳아요.</h6>
       <hr>
     </div>
-    <div class="form-box" id="order-box" style="display:none">
+    <div class="form-box" id="order-box" >
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="input_name">주문자 이름</span>
+          <span class="input-group-text" >주문자 이름</span>
         </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="input_name">
       </div>
 
       <div class="input-group mb-3">
@@ -131,20 +123,20 @@
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="input_addr">주소</span>
+          <span class="input-group-text" >주소</span>
         </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="input_addr">
       </div>
 
       <div class="input-group mb-3">
         <div class="input-group-prepend">
-          <span class="input-group-text" id="input_phone">전화번호</span>
+          <span class="input-group-text" >전화번호</span>
         </div>
-        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default">
+        <input type="text" class="form-control" aria-label="Default" aria-describedby="inputGroup-sizing-default" id="input_phone">
       </div>
     </div>
     <div class="button" id="button-line">
-      <button onclick="openclose()" type="button">주문서 열기</button>
+      <button onclick="order()" type="button">주문하기</button>
       
     
     </div>
