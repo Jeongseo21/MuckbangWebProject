@@ -4,7 +4,7 @@
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
+  
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
     integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
@@ -20,6 +20,9 @@
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
+
+  <!-- Ajax import-->>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <title>1주차_숙제_한정서</title>
   <style>
@@ -71,9 +74,33 @@
       }else{
         alert("주문정보 : "+name+" "+count+"개 "+addr+" "+phone)
       }
-
       
     }
+    let num = 1;
+    function exchangeRate(){
+      if(num%2 == 1){
+        $('#exchange').empty();
+      $('#exchangeButton').text("닫기");
+      $.ajax({
+        type: "GET",
+        url: "https://api.manana.kr/exchange/rate.json",
+        data: {},
+        success: function(response){
+          let exchaRate = response[1]["rate"];
+          
+          $('#exchange').append(`<li>환율 : ${exchaRate}</li>`);
+        }
+
+      })
+      }else{
+        $('#exchange').empty();
+        $('#exchangeButton').text("환율보기");
+      }
+      num++;
+        
+      }
+
+    
   </script>
 
 </head>
@@ -100,7 +127,12 @@
       <h6>2년 전 어느 여름날, 더위를 피해 들어간 안국역의 어느 2층 카페에서 인생커피를 만났죠.</h6>
       <h6>에스프레소와 크림의 조합은 언제나 옳아요.</h6>
       <hr>
+      <button onclick="exchangeRate()" type="button" id="exchangeButton">환율보기</button>
+      <u1 id = "exchange">환율 정보를 제공합니다
+        
+        </u1>
     </div>
+    <br>
     <div class="form-box" id="order-box" >
       <div class="input-group mb-3">
         <div class="input-group-prepend">
