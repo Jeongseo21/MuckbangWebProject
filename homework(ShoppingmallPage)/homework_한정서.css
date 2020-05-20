@@ -1,0 +1,29 @@
+* {
+    font-family: 'Noto Sans KR', sans-serif;
+  }
+  .picture {
+    background-image: url(https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-15/e35/19984323_149975478887114_264805985296580608_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=102&_nc_ohc=DkaCuQfoWfcAX9E3--s&oh=7d133145f3073c4d3a49d446acff97dd&oe=5EE7F6F4);
+    background-position: center;
+    background-size: cover;
+    margin: auto auto 20px;
+    padding: auto;
+    width: 390px;
+    height: 500px;
+    border-radius: 20px;
+  }
+  .price {
+    float: right;
+  }
+  .price {
+    margin-top: 15px;
+  }
+  .wrap {
+    margin: auto;
+    padding: 30px 30px 30px 30px;
+    width: 450px;
+  }
+  .button {
+    width: 100px;
+    margin: auto;
+  }
+  
