@@ -1,6 +1,8 @@
 <html lang="en">
 
 <head>
+  <!-- style.css 파일을 같은 폴더에 만들고, head 태그에서 불러오기 -->
+  <link rel="stylesheet" type="text/css" href = "homework_한정서.css">
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -25,37 +27,7 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <title>1주차_숙제_한정서</title>
-  <style>
-    * {
-      font-family: 'Noto Sans KR', sans-serif;
-    }
-    .picture {
-      background-image: url(https://scontent-ssn1-1.cdninstagram.com/v/t51.2885-15/e35/19984323_149975478887114_264805985296580608_n.jpg?_nc_ht=scontent-ssn1-1.cdninstagram.com&_nc_cat=102&_nc_ohc=DkaCuQfoWfcAX9E3--s&oh=7d133145f3073c4d3a49d446acff97dd&oe=5EE7F6F4);
-      background-position: center;
-      background-size: cover;
-      margin: auto auto 20px;
-      padding: auto;
-      width: 390px;
-      height: 500px;
-      border-radius: 20px;
-    }
-    .price {
-      float: right;
-    }
-    .price {
-      margin-top: 15px;
-    }
-    .wrap {
-      margin: auto;
-      padding: 30px 30px 30px 30px;
-      width: 450px;
-    }
-    .button {
-      width: 100px;
-      margin: auto;
-    }
-    
-  </style>
+ 
   <link
     href="https://fonts.googleapis.com/css2?family=Hi+Melody&family=Noto+Sans+KR:wght@100;300;400;500;700;900&display=swap"
     rel="stylesheet">
@@ -69,8 +41,14 @@
       let count = $('#select_count').val();
       let addr = $('#input_addr').val();
       let phone = $('#input_phone').val();
-      if(name == ""||count == "-- 수량을 선택하세요 --"||addr==""||phone==""){
-        alert("작성이 완료되지 않았습니다.")
+      if(name == ""){
+        alert("이름을 입력해주세요")
+      }else if(count == "-- 수량을 선택하세요 --"){
+        alert("수량을 입력해주세요")
+      }else if(addr==""){
+        alert("주소를 입력해주세요")
+      }else if(phone==""){
+        alert("전화번호를 입력해주세요")
       }else{
         alert("주문정보 : "+name+" "+count+"개 "+addr+" "+phone)
       }
@@ -88,7 +66,7 @@
         success: function(response){
           let exchaRate = response[1]["rate"];
           
-          $('#exchange').append(`<li>환율 : ${exchaRate}</li>`);
+          $('#exchange').append(`<li span style="color:blue">환율 : ${exchaRate}</li></span>`);
         }
 
       })
