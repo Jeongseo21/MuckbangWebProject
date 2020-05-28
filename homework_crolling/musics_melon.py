@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup             # pip install bs4
 
 from pymongo import MongoClient           # pip install pymongo
 client = MongoClient('localhost', 27017)  # mongoDB 포트번호 : 27017
-db = client.dbMelonMusics                      # 'dbsparta' 생성
+db = client.dbMelonMusics                      # 'dbMelonMusics' 생성
 
 
 headers = {'User-Agent' : 'Mozilla/5.0 (Windows NT 10.0; Win64; x64)AppleWebKit/537.36 (KHTML, like Gecko) Chrome/73.0.3683.86 Safari/537.36'}
