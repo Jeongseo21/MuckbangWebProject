@@ -21,28 +21,24 @@ def write_review():
     review_receive = request.form['review_give']
 
     # DB에 삽입할 review 만들기
-    review = {
-       'title': title_receive,
-       'author': author_receive,
-       'review': review_receive
+    review={
+        'title': title_receive,
+        'author': author_receive,
+        'review': review_receive
     }
-    # reviews에 review 저장하기
+    # reviewdb에 review 저장하기
     db.reviews.insert_one(review)
     # 성공 여부 & 성공 메시지 반환
-    return jsonify({'result': 'success', 'msg': '리뷰가 성공적으로 작성되었습니다.'})
+    return jsonify({'result':'success','msg':'리뷰가 성공적으로 등록되었습니다.'})
+    
 
 
 @app.route('/reviews', methods=['GET'])
 def read_reviews():
-        # 1. DB에서 리뷰 정보 모두 가져오기
+    #1. 모든 reviews의 문서를 가져온 후 List로 변환합니다.
     reviews = list(db.reviews.find({},{'_id':0}))
-    
-		# 2. 성공 여부 & 리뷰 목록 반환하기
-    return jsonify({'result': 'success', 'reviews': reviews})
-		
-    
-
-
+    #2. 성공 메세지와 함께 리뷰를 보냅니다.
+    return jsonify({'result':'success', 'reviews': reviews})
 
 if __name__ == '__main__':
     app.run('0.0.0.0', port=5000, debug=True)

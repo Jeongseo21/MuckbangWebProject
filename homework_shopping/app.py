@@ -11,34 +11,37 @@ def home():
     return render_template('index.html')
 
 ## API 역할을 하는 부분
-@app.route('/order', methods=['POST'])
-def write_review():
-    # title_receive로 클라이언트가 준 title 가져오기
-    title_receive = request.form['title_give']
-    # author_receive로 클라이언트가 준 author 가져오기
-    author_receive = request.form['author_give']
-    # review_receive로 클라이언트가 준 review 가져오기
-    review_receive = request.form['review_give']
+@app.route('/orders', methods=['POST'])
+def write_orders():
+    # name 가져오기
+    name_receive = request.form['name_give']
+    # count 가져오기
+    count_receive = request.form['count_give']
+    # addr 가져오기
+    addr_receive = request.form['addr_give']
+    # phone 가져오기
+    phone_receive = request.form['phone_give']
 
-    # DB에 삽입할 review 만들기
-    review = {
-       'title': title_receive,
-       'author': author_receive,
-       'review': review_receive
+    # DB에 삽입할 order 만들기
+    order = {
+       'name': name_receive,
+       'count': count_receive,
+       'addr': addr_receive,
+       'phone': phone_receive
     }
-    # reviews에 review 저장하기
-    db.reviews.insert_one(review)
+    # orders에 order 저장하기
+    db.orders.insert_one(order)
     # 성공 여부 & 성공 메시지 반환
-    return jsonify({'result': 'success', 'msg': '리뷰가 성공적으로 작성되었습니다.'})
+    return jsonify({'result': 'success', 'msg': '주문이 성공적으로 작성되었습니다.'})
 
 
-@app.route('/orderlist', methods=['GET'])
-def read_reviews():
-        # 1. DB에서 리뷰 정보 모두 가져오기
-    reviews = list(db.reviews.find({},{'_id':0}))
+@app.route('/orders', methods=['GET'])
+def read_orders():
+        # 1. DB에서 주문 정보 모두 가져오기
+    orders = list(db.orders.find({},{'_id':0}))
     
-		# 2. 성공 여부 & 리뷰 목록 반환하기
-    return jsonify({'result': 'success', 'reviews': reviews})
+		# 2. 성공 여부 & 주문 목록 반환하기
+    return jsonify({'result': 'success', 'orders': orders})
 		
     
 

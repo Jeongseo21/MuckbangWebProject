@@ -2,7 +2,7 @@
 
 <head>
   <!-- style.css 파일을 같은 폴더에 만들고, head 태그에서 불러오기 -->
-  <link rel="stylesheet" type="text/css" href="homework_한정서.css">
+  <link rel="stylesheet" type="text/css" href="/static/shopping.css">
   <!-- Required meta tags -->
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -23,7 +23,7 @@
     integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
     crossorigin="anonymous"></script>
 
-  <!-- Ajax import-->>
+  <!-- Ajax import-->
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
   <title>1주차_숙제_한정서</title>
@@ -34,9 +34,13 @@
 
   <script>
 
+$(document).ready(function () {
+            $('#orders-box').html('');
+            listing();
+        });
 
-
-    function order() {
+      function order() {
+      flag = false
       let name = $('#input_name').val();
       let count = $('#select_count').val();
       let addr = $('#input_addr').val();
@@ -45,15 +49,70 @@
         alert("이름을 입력해주세요")
       } else if (count == "-- 수량을 선택하세요 --") {
         alert("수량을 입력해주세요")
+        return
       } else if (addr == "") {
         alert("주소를 입력해주세요")
+        return
       } else if (phone == "") {
         alert("전화번호를 입력해주세요")
+        return
       } else {
         alert("주문정보 : " + name + " " + count + "개 " + addr + " " + phone)
+        flag = true
       }
 
+      if(flag){
+        $.ajax({
+                  type: 'POST', //타입작성
+                  url: '/orders', //url작성
+                  data: {name_give:name, count_give:count, addr_give:addr, phone_give:phone},
+                  success: function(response){
+                      if(response['result'] == 'success'){
+                          alert(response['msg']);
+                          window.location.reload(); //현재페이지 새로고침
+                      }
+                  }
+              });
+      }
     }
+        
+      function listing(){
+            //1. 리뷰 목록을 서버에 요청
+            //2. 요청 성공 여부 확인
+            //3. 요청 성공했을 때, 리뷰를 올바르게 화면에 나타내기
+
+            $.ajax({
+                type:"GET",
+                url:"/orders",
+                data:{},
+                success: function(response){
+                    if(response['result'] == 'success'){
+                        //요청에 성공했으면 list orders를 받아와
+                        let orders = response['orders'];
+                        //성공했을 때 리뷰를 올바르게 화면에 나타내기
+                        for(let i = 0; i<orders.length; i++){
+                            make_card(orders[i]['name'],orders[i]['count'],orders[i]['addr'],orders[i]['phone']);
+                        }
+                    }else{
+                        alert('주문을 받아오지 못했습니다.');
+                    }
+
+                }
+            });
+        }
+
+        function make_card(name, count, addr, phone){
+            let temp_html = `<tr>
+                                <td>${name}</td>
+                                <td>${count}</td>
+                                <td>${addr}</td>
+                                <td>${phone}</td>
+                            </tr>`;
+            $('#orders-box').append(temp_html);
+        }
+
+
+    
     let num = 1;
     function exchangeRate() {
       if (num % 2 == 1) {
@@ -77,6 +136,8 @@
       num++;
 
     }
+
+    
 
 
   </script>
@@ -153,7 +214,34 @@
 
 
     </div>
+
+    <div>
+      <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">이름</th>
+            <th scope="col">수량</th>
+            <th scope="col">주소</th>
+            <th scope="col">전화번호</th>
+          </tr>
+        </thead>
+        <tbody id="orders-box">
+          <tr>
+            <td>Tonie</th>
+            <td>Mark</td>
+            <td>Otto</td>
+            <td>@mdo</td>
+          </tr>
+          
+        </tbody>
+      </table>
+  
+  
+  
+    </div>
   </div>
+
+  
 
 
 </body>
