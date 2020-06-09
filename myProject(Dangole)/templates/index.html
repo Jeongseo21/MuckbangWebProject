@@ -1,0 +1,21 @@
+{% extends 'layout.html' %}
+ 
+{% block content %}
+<div align="center">
+    <img src="{{ url_for('static', filename='main_title.jpg') }}"/>
+    <h1>메인페이지</h1>
+  
+    <div>
+        <p>한정서</p>
+        <p>
+            DAY/ 날짜/ 구현할 기능 --> 필요한 공부
+        </p>
+        <p>
+            Day1/ 2020-06-08 10:43pm/ header 메뉴 만들기,html 구조 만들기 --> flask를 이용한 html 상속기능
+        </p>
+        <p>
+            Day2/ 2020-06-0/ 유튜브 영상 크롤링해서 화면에 띄우기
+        </p>
+    </div>
+</div>
+{% endblock %}
