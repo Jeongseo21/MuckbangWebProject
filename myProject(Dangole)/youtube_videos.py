@@ -9,7 +9,7 @@ from oauth2client.tools import argparser
 # tab of
 #   https://cloud.google.com/console
 # Please ensure that you have enabled the YouTube Data API for your project.
-DEVELOPER_KEY = "AIzaSyC567HkL6VbZhjGxugUXZbBJjvHalOYnsc"
+DEVELOPER_KEY = ""
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
