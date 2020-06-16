@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return render_template('index.html')
+  return render_template('index.html')
 
 @app.route('/form')
 def form():
@@ -16,7 +16,7 @@ def videos():
 
 @app.route('/list',methods=['POST'])
 def videospost():
-  youtubes = youtube_videos.youtube_search("이영자+먹방")
+  youtubes = youtube_videos.youtube_search()
   print("\n\nVideos:\n\n", "\n\n".join(youtubes['videos']), "\n")
   print("\n\nChannels:\n\n", "\n".join(youtubes['channels']), "\n")
   print("\n\nPlaylists:\n\n", "\n".join(youtubes['playlists']), "\n")
