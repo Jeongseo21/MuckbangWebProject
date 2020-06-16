@@ -13,19 +13,20 @@ DEVELOPER_KEY = ""
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
-def youtube_search(options):
+def youtube_search(q_value):
   youtube = build(YOUTUBE_API_SERVICE_NAME, YOUTUBE_API_VERSION,
     developerKey=DEVELOPER_KEY)
 
   # Call the search.list method to retrieve results matching the specified
   # query term.
   search_response = youtube.search().list(
-    q = "bts",
+    q = q_value,
     order = "date",
     part = "snippet",
     maxResults = 50
     ).execute()
-
+  
+  print(search_response)
   videos = []
   channels = []
   playlists = []
@@ -43,9 +44,11 @@ def youtube_search(options):
       playlists.append("%s (%s)" % (search_result["snippet"]["title"],
                                     search_result["id"]["playlistId"]))
 
-  print("Videos:\n", "\n".join(videos), "\n")
-  print("Channels:\n", "\n".join(channels), "\n")
-  print("Playlists:\n", "\n".join(playlists), "\n")
+  return {"videos":videos,"channels":channels,"playlists":playlists}
+  # print("\n\nVideos:\n\n", "\n".join(videos), "\n")
+  # print("\n\nChannels:\n\n", "\n".join(channels), "\n")
+  # print("\n\nPlaylists:\n\n", "\n".join(playlists), "\n")
+# youtube_search("이영자+먹방")
 
 
 if __name__ == "__main__":
@@ -53,7 +56,7 @@ if __name__ == "__main__":
   argparser.add_argument("--max-results", help="Max results", default=25)
   args = argparser.parse_args()
 
-#   try:
-#     youtube_search(args)
-#   except HttpError as e:
-#     print("An HTTP error %d occurred:\n%s"% (e.resp.status, e.content))
+try:
+  youtube_search(args)
+except HttpError as e:
+  print("An HTTP error %d occurred:\n%s"% (e.resp.status, e.content))
