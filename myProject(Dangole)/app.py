@@ -1,5 +1,4 @@
 from flask import Flask, render_template,jsonify
-import youtube_videos
 app = Flask(__name__)
 
 @app.route('/')
@@ -14,7 +13,7 @@ def form():
 def videos():
   return render_template('list.html')
 
-@app.route('/list',methods=['POST'])
+# @app.route('/list',methods=['POST'])
 # def videospost():
 #   youtubes = youtube_videos.youtube_search()
 #   print("\n\nVideos:\n\n", "\n\n".join(youtubes['videos']), "\n")
