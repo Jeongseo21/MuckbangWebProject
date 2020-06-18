@@ -9,9 +9,13 @@ def home():
 def form():
   return render_template('form.html')
 
-@app.route('/list',methods=['GET'])
+@app.route('/list')
 def videos():
   return render_template('list.html')
+
+@app.route('/mypage')
+def mypage():
+  return render_template('mypage.html')
 
 # @app.route('/list',methods=['POST'])
 # def videospost():
