@@ -9,7 +9,7 @@ from oauth2client.tools import argparser
 # tab of
 #   https://cloud.google.com/console
 # Please ensure that you have enabled the YouTube Data API for your project.
-DEVELOPER_KEY = ""
+DEVELOPER_KEY = "AIzaSyC567HkL6VbZhjGxugUXZbBJjvHalOYnsc"
 YOUTUBE_API_SERVICE_NAME = "youtube"
 YOUTUBE_API_VERSION = "v3"
 
@@ -20,7 +20,7 @@ def youtube_search(q_value):
   # Call the search.list method to retrieve results matching the specified
   # query term.
   search_response = youtube.search().list(
-    q = q_value,
+    q = '이영자먹방',
     order = "date",
     part = "snippet",
     maxResults = 50
@@ -44,10 +44,10 @@ def youtube_search(q_value):
       playlists.append("%s (%s)" % (search_result["snippet"]["title"],
                                     search_result["id"]["playlistId"]))
 
-  return {"videos":videos,"channels":channels,"playlists":playlists}
-  # print("\n\nVideos:\n\n", "\n".join(videos), "\n")
-  # print("\n\nChannels:\n\n", "\n".join(channels), "\n")
-  # print("\n\nPlaylists:\n\n", "\n".join(playlists), "\n")
+  
+  print("\n\nVideos:\n\n", "\n".join(videos), "\n")
+  print("\n\nChannels:\n\n", "\n".join(channels), "\n")
+  print("\n\nPlaylists:\n\n", "\n".join(playlists), "\n")
 # youtube_search("이영자+먹방")
 
 
