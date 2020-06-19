@@ -3,6 +3,9 @@
 from googleapiclient.discovery import build
 from googleapiclient.errors import HttpError
 from oauth2client.tools import argparser
+from pymongo import MongoClient
+client = MongoClient('localhost', 27017)
+db = client.dbproject
 
 
 # Set DEVELOPER_KEY to the API key value from the APIs & auth > Registered apps
@@ -26,10 +29,12 @@ def youtube_search(q_value):
     maxResults = 50
     ).execute()
   
-  print(search_response)
+  # print(search_response)
   videos = []
-  channels = []
-  playlists = []
+  descriptions = []
+  thumbnails = []
+  channelTitles = []
+  publishTimes = []
 
   # Add each result to the appropriate list, and then display the lists of
   # matching videos, channels, and playlists.
@@ -37,18 +42,36 @@ def youtube_search(q_value):
     if search_result["id"]["kind"] == "youtube#video":
       videos.append("%s (%s)" % (search_result["snippet"]["title"],
                                  search_result["id"]["videoId"]))
-    elif search_result["id"]["kind"] == "youtube#channel":
-      channels.append("%s (%s)" % (search_result["snippet"]["title"],
-                                   search_result["id"]["channelId"]))
-    elif search_result["id"]["kind"] == "youtube#playlist":
-      playlists.append("%s (%s)" % (search_result["snippet"]["title"],
-                                    search_result["id"]["playlistId"]))
+      descriptions.append("%s (%s)" % (search_result["snippet"]["description"],
+                                 search_result["id"]["videoId"]))
+      thumbnails.append("%s (%s)" % (search_result["snippet"]["thumbnails"]["medium"],
+                                   search_result["id"]["videoId"]))
+      channelTitles.append("%s (%s)" % (search_result["snippet"]["channelTitle"],
+                                    search_result["id"]["videoId"]))
+      publishTimes.append("%s (%s)" % (search_result["snippet"]["publishTime"],
+                                    search_result["id"]["videoId"]))
+      
 
-  
-  print("\n\nVideos:\n\n", "\n".join(videos), "\n")
-  print("\n\nChannels:\n\n", "\n".join(channels), "\n")
-  print("\n\nPlaylists:\n\n", "\n".join(playlists), "\n")
-# youtube_search("이영자+먹방")
+
+
+
+  # print("\n\nVideos:\n\n", "\n".join(videos), "\n")
+  # print("\n\ndescription:\n\n", "\n".join(descriptions), "\n")
+  # print("\n\nthumbnails:\n\n", "\n".join(thumbnails), "\n")
+  # print("\n\nchannelTitles:\n\n", "\n".join(channelTitles), "\n")
+  # print("\n\npublishTimes:\n\n", "\n".join(publishTimes), "\n")
+  for i in range(0,49):
+    db.myRtr.insert_one({'title':videos[i]},{'url':descriptions[i]})
+    
+
+  # for url in thumbnails :
+  #   doc = {
+  #      'url' : url,
+  #      # 'img_url' : thumbnail,
+  #      # 'channelTitle' : channel,
+  #      # 'publishTime' : publishTime
+  #    }
+  #   db.myRtr.insert_one(doc)
 
 
 if __name__ == "__main__":
