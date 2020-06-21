@@ -5,10 +5,6 @@ app = Flask(__name__)
 def home():
   return render_template('index.html')
 
-@app.route('/form')
-def form():
-  return render_template('form.html')
-
 @app.route('/list')
 def videos():
   return render_template('list.html')

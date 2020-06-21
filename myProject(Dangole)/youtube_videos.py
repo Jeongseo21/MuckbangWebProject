@@ -23,7 +23,7 @@ def youtube_search(q_value):
   # Call the search.list method to retrieve results matching the specified
   # query term.
   search_response = youtube.search().list(
-    q = '이영자먹방',
+    q = '입짧은햇님',
     order = "date",
     part = "snippet",
     maxResults = 50
@@ -55,13 +55,13 @@ def youtube_search(q_value):
 
 
 
-  # print("\n\nVideos:\n\n", "\n".join(videos), "\n")
-  # print("\n\ndescription:\n\n", "\n".join(descriptions), "\n")
-  # print("\n\nthumbnails:\n\n", "\n".join(thumbnails), "\n")
-  # print("\n\nchannelTitles:\n\n", "\n".join(channelTitles), "\n")
-  # print("\n\npublishTimes:\n\n", "\n".join(publishTimes), "\n")
-  for i in range(0,49):
-    db.myRtr.insert_one({'title':videos[i]},{'url':descriptions[i]})
+  print("\n\nVideos:\n\n", "\n".join(videos), "\n")
+  print("\n\ndescription:\n\n", "\n".join(descriptions), "\n")
+  print("\n\nthumbnails:\n\n", "\n".join(thumbnails), "\n")
+  print("\n\nchannelTitles:\n\n", "\n".join(channelTitles), "\n")
+  print("\n\npublishTimes:\n\n", "\n".join(publishTimes), "\n")
+  # for i in range(0,49):
+  #   db.myRtr.insert_one({'title':videos[i]},{'url':descriptions[i]})
     
 
   # for url in thumbnails :

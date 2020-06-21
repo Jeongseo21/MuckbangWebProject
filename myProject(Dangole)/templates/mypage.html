@@ -1,8 +1,194 @@
 {% extends 'layout.html' %}
  
 {% block content %}
-
-<h1>mypage</h1>
-    
-
+<div class="wrap">
+    <!-- <img src="{{ url_for('static', filename='list.jpg') }}"/> -->
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">먹방 보관함</h1>
+          <p class="lead">오늘 저녁 맛집탐방 어때요?</p>
+          <p class="lead">
+            <button type="button" class="btn btn-outline-primary">먹방 보러가기</button>
+          </p>
+        </div>
+      </div>
+      
+      <div class="card-deck">
+        <div class="card">
+          <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+            <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+            <p class="card-text"><small class="text-muted">TV-People</small></p>
+            <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+            <a class="btn btn-info" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">메모 열기</a>
+          </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="https://i.ytimg.com/vi/0jRBdwKclFA/mqdefault.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">[현실리얼먹방]편스토랑 이영자��오리파워업덮밥��리뷰먹먹방방</h5>
+              <p class="card-text">현실먹방 #편스토랑 #오리파워업덮밥 #황남자</p>
+              <p class="card-text"><small class="text-muted">유치뽕짝황남자</small></p>
+              <p class="card-text"><small class="text-muted">2020-06-15</small></p>
+              <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample2" aria-expanded="false" aria-controls="multiCollapseExample2">메모 열기</button>
+            </div> 
+          </div>
+          
+          <div class="card">
+            <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+              <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+              <p class="card-text"><small class="text-muted">TV-People</small></p>
+              <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+              <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample3" aria-expanded="false" aria-controls="multiCollapseExample3">메모 열기</button>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample1">
+            <div class="card card-body">
+              오늘뭐먹지식당/
+              신촌,홍대/
+              한식
+              <br><br>
+              오늘은 왠지 집밥이 땡긴다.. 여기 가면 이걸 꼭 먹어야한다. 그런 아무말을 적어주시면 됩니다.<br>
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample2">
+            <div class="card card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+          </div>
+        </div>
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample3">
+              <div class="card card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="card-deck">
+        <div class="card">
+          <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+            <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+            <p class="card-text"><small class="text-muted">TV-People</small></p>
+            <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+            <a class="btn btn-info" data-toggle="collapse" href="#multiCollapseExample4" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">메모 열기</a>
+          </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+              <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+              <p class="card-text"><small class="text-muted">TV-People</small></p>
+              <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+              <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample5" aria-expanded="false" aria-controls="multiCollapseExample2">메모 열기</button>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+              <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+              <p class="card-text"><small class="text-muted">TV-People</small></p>
+              <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+              <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample6" aria-expanded="false" aria-controls="multiCollapseExample2">메모 열기</button>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample4">
+            <div class="card card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample5">
+            <div class="card card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+          </div>
+        </div>
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample6">
+              <div class="card card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="card-deck">
+        <div class="card">
+          <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+            <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+            <p class="card-text"><small class="text-muted">TV-People</small></p>
+            <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+            <a class="btn btn-info" data-toggle="collapse" href="#multiCollapseExample7" role="button" aria-expanded="false" aria-controls="multiCollapseExample1">메모 열기</a>
+          </div>
+        </div>
+        <div class="card">
+            <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+              <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+              <p class="card-text"><small class="text-muted">TV-People</small></p>
+              <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+              <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample8" aria-expanded="false" aria-controls="multiCollapseExample2">메모 열기</button>
+            </div>
+          </div>
+          <div class="card">
+            <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+            <div class="card-body">
+              <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+              <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+              <p class="card-text"><small class="text-muted">TV-People</small></p>
+              <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+              <button class="btn btn-info" type="button" data-toggle="collapse" data-target="#multiCollapseExample9" aria-expanded="false" aria-controls="multiCollapseExample2">메모 열기</button>
+            </div>
+          </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample7">
+            <div class="card card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+          </div>
+        </div>
+        <div class="col">
+          <div class="collapse multi-collapse" id="multiCollapseExample8">
+            <div class="card card-body">
+              Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+            </div>
+          </div>
+        </div>
+        <div class="col">
+            <div class="collapse multi-collapse" id="multiCollapseExample9">
+              <div class="card card-body">
+                Anim pariatur cliche reprehenderit, enim eiusmod high life accusamus terry richardson ad squid. Nihil anim keffiyeh helvetica, craft beer labore wes anderson cred nesciunt sapiente ea proident.
+              </div>
+            </div>
+          </div>
+      </div>
+      
+     
+</div>
+<div>
+    <p>
+        
+    </p>
+</div>
 {% endblock %}
