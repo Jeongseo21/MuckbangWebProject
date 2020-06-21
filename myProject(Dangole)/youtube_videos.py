@@ -40,16 +40,16 @@ def youtube_search():
   # matching videos, channels, and playlists.
   for search_result in search_response.get("items", []):
     if search_result["id"]["kind"] == "youtube#video":
-      videos.append("%s (%s)" % (search_result["snippet"]["title"],
-                                 search_result["id"]["videoId"]))
-      descriptions.append("%s (%s)" % (search_result["snippet"]["description"],
-                                 search_result["id"]["videoId"]))
-      thumbnails.append("%s (%s)" % (search_result["snippet"]["thumbnails"]["medium"],
-                                   search_result["id"]["videoId"]))
-      channelTitles.append("%s (%s)" % (search_result["snippet"]["channelTitle"],
-                                    search_result["id"]["videoId"]))
-      publishTimes.append("%s (%s)" % (search_result["snippet"]["publishTime"],
-                                    search_result["id"]["videoId"]))
+      videos.append("%s" % (search_result["snippet"]["title"],
+                                 ))
+      descriptions.append("%s" % (search_result["snippet"]["description"],
+                                 ))
+      thumbnails.append("%s" % (search_result["snippet"]["thumbnails"]["medium"]["url"],
+                                  ))
+      channelTitles.append("%s" % (search_result["snippet"]["channelTitle"],
+                                   ))
+      publishTimes.append("%s" % (search_result["snippet"]["publishTime"],
+                                  ))
       
 
   print("\n\nVideos:\n\n", "\n".join(videos), "\n")
@@ -57,18 +57,17 @@ def youtube_search():
   print("\n\nthumbnails:\n\n", "\n".join(thumbnails), "\n")
   print("\n\nchannelTitles:\n\n", "\n".join(channelTitles), "\n")
   print("\n\npublishTimes:\n\n", "\n".join(publishTimes), "\n")
-  # for i in range(0,49):
-  #   db.myRtr.insert_one({'title':videos[i]},{'url':descriptions[i]})
-    
-
-  # for url in thumbnails :
-  #   doc = {
-  #      'url' : url,
-  #      # 'img_url' : thumbnail,
-  #      # 'channelTitle' : channel,
-  #      # 'publishTime' : publishTime
-  #    }
-  #   db.myRtr.insert_one(doc)
+  
+  
+  for i in range(45) :
+    doc = {
+       'title' : videos[i],
+       'desc' : descriptions[i],
+       'img_url' : thumbnails[i],
+       'channelTitle' : channelTitles[i],
+       'publishTime' : publishTimes[i]
+     }
+    db.LeeYoungJa.insert_one(doc)
 
 
 if __name__ == "__main__":
@@ -77,6 +76,6 @@ if __name__ == "__main__":
   args = argparser.parse_args()
 
 try:
-  youtube_search(args)
+  youtube_search()
 except HttpError as e:
   print("An HTTP error %d occurred:\n%s"% (e.resp.status, e.content))
