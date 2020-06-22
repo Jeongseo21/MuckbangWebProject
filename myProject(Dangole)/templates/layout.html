@@ -22,12 +22,6 @@
         // index.html 로드가 완료되면 자동으로 show_star() 함수를 호출합니다.
         show_videos();
       });
-      function toList(){
-        location.href="/list"
-      }
-      function toMypage(){
-        location.href="/mypage"
-      }
       
       function show_videos(){
         // 1. #star_box의 내부 html 태그를 모두 삭제합니다.
@@ -73,37 +67,38 @@
                                       <div class="card">
                                       <img class="card-img-top" src="${img_url1}" alt="Card image cap">
                                       <div class="card-body">
-                                        <a href="https://www.youtube.com/watch?v=${videoId1}">영상보기</a>
-                                        <h5 class="card-title">${title1}</h5>
+                                        <a href="https://www.youtube.com/watch?v=${videoId1}"><h5 class="card-title">${title1}</h5></a>
                                         <p class="card-text">${desc1}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle1}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime1}</small></p>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
                                       </div>
                                     </div>
+                                    
                                     <div class="card">
                                       <img class="card-img-top" src="${img_url2}" alt="Card image cap">
                                       <div class="card-body">
-                                        <a href="https://www.youtube.com/watch?v=${videoId2}">영상보기</a>
-                                        <h5 class="card-title">${title2}</h5>
+                                        <a href="https://www.youtube.com/watch?v=${videoId2}"><h5 class="card-title">${title2}</h5></a>
+                                        
                                         <p class="card-text">${desc2}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle2}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime2}</small></p>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
                                       </div>
                                     </div>
+                                    
                                     <div class="card">
                                       <img class="card-img-top" src="${img_url3}" alt="Card image cap">
                                       <div class="card-body">
-                                        <a href="https://www.youtube.com/watch?v=${videoId3}">영상보기</a>
-                                        <h5 class="card-title">${title3}</h5>
+                                        <a href="https://www.youtube.com/watch?v=${videoId3}"><h5 class="card-title">${title3}</h5></a>
+                                        
                                         <p class="card-text">${desc3}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle3}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime3}</small></p>
                                         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
                                       </div>
                                     </div>
-                                    </div>`
+                                    </div><br>`
       
                     // 7. #star-box에 temp_html을 붙입니다.
                     $('#video-box').append(temp_html)
@@ -114,11 +109,11 @@
     </script>
     <style>
       .index{
-        background-color: dimgrey;
+        background-color : #D6D6D6;
         
       }
       .wrap{
-        background-color: dimgrey;
+        background-color :#D6D6D6;
       }
 
       .display-4{
