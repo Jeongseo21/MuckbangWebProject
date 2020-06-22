@@ -30,16 +30,20 @@ def youtube_search():
     ).execute()
   
   # print(search_response)
+  
   videos = []
   descriptions = []
   thumbnails = []
   channelTitles = []
   publishTimes = []
+  videoId = []
 
   # Add each result to the appropriate list, and then display the lists of
   # matching videos, channels, and playlists.
   for search_result in search_response.get("items", []):
     if search_result["id"]["kind"] == "youtube#video":
+      videoId.append("%s" % (search_result["id"]["videoId"],
+                                  ))
       videos.append("%s" % (search_result["snippet"]["title"],
                                  ))
       descriptions.append("%s" % (search_result["snippet"]["description"],
@@ -51,7 +55,7 @@ def youtube_search():
       publishTimes.append("%s" % (search_result["snippet"]["publishTime"],
                                   ))
       
-
+  print("\n\nVideoId:\n\n", "\n".join(videoId), "\n")
   print("\n\nVideos:\n\n", "\n".join(videos), "\n")
   print("\n\ndescription:\n\n", "\n".join(descriptions), "\n")
   print("\n\nthumbnails:\n\n", "\n".join(thumbnails), "\n")
@@ -61,13 +65,14 @@ def youtube_search():
   
   for i in range(45) :
     doc = {
-       'title' : videos[i],
-       'desc' : descriptions[i],
-       'img_url' : thumbnails[i],
-       'channelTitle' : channelTitles[i],
-       'publishTime' : publishTimes[i]
+      'videoId' : videoId[i],
+      'title' : videos[i],
+      'desc' : descriptions[i],
+      'img_url' : thumbnails[i],
+      'channelTitle' : channelTitles[i],
+      'publishTime' : publishTimes[i]
      }
-    db.LeeYoungJa.insert_one(doc)
+    db.HaetNim.insert_one(doc)
 
 
 if __name__ == "__main__":

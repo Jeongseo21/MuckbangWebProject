@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <!-- Webpage Title -->
-    <title>한정서_먹방여기다있다</title>
+    <title>한정서_Muckjjal</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -47,18 +47,21 @@
                     let video2 = videos[i+1]
                     let video3 = videos[i+2]
                     // 5. star[i] 요소의 name, url, img_url, recent, like 키 값을 활용하여 값을 조회합니다.
+                    let videoId1 = video1['videoId']
                     let title1 = video1['title']
                     let desc1 = video1['desc']
                     let img_url1 = video1['img_url']
                     let channelTitle1 = video1['channelTitle']
                     let publishTime1= video1['publishTime']
-
+                    
+                    let videoId2 = video2['videoId']
                     let title2 = video2['title']
                     let desc2 = video2['desc']
                     let img_url2 = video2['img_url']
                     let channelTitle2 = video2['channelTitle']
                     let publishTime2= video2['publishTime']
 
+                    let videoId3 = video3['videoId']
                     let title3 = video3['title']
                     let desc3 = video3['desc']
                     let img_url3 = video3['img_url']
@@ -70,6 +73,7 @@
                                       <div class="card">
                                       <img class="card-img-top" src="${img_url1}" alt="Card image cap">
                                       <div class="card-body">
+                                        <a href="https://www.youtube.com/watch?v=${videoId1}">영상보기</a>
                                         <h5 class="card-title">${title1}</h5>
                                         <p class="card-text">${desc1}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle1}</small></p>
@@ -80,6 +84,7 @@
                                     <div class="card">
                                       <img class="card-img-top" src="${img_url2}" alt="Card image cap">
                                       <div class="card-body">
+                                        <a href="https://www.youtube.com/watch?v=${videoId2}">영상보기</a>
                                         <h5 class="card-title">${title2}</h5>
                                         <p class="card-text">${desc2}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle2}</small></p>
@@ -90,6 +95,7 @@
                                     <div class="card">
                                       <img class="card-img-top" src="${img_url3}" alt="Card image cap">
                                       <div class="card-body">
+                                        <a href="https://www.youtube.com/watch?v=${videoId3}">영상보기</a>
                                         <h5 class="card-title">${title3}</h5>
                                         <p class="card-text">${desc3}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle3}</small></p>
@@ -107,6 +113,44 @@
       }
     </script>
     <style>
+      .index{
+        background-color: dimgrey;
+        
+      }
+      .wrap{
+        background-color: dimgrey;
+      }
+
+      .display-4{
+        background-color: whitesmoke;
+        background-color: rgba( 255, 255, 255, 0.5 )
+      }
+      .lead{
+        background-color: whitesmoke;
+        background-color: rgba( 255, 255, 255, 0.5 )
+      }
+      .jumbotron-fluid{
+        
+        width: 1200px;
+        height: 796px;
+        margin: auto;
+        background-image: url("../static/pizzamain.png");
+      }
+      .jumbotron-fluid1{
+        
+        width: 1500px;
+        margin: auto;
+        background-image: url("../static/pizza1500.png");
+      }
+      .jumbotron-fluid2{
+        width: 1500px;
+        margin: auto;
+        background-image: url("../static/pizza1500.png");
+      }
+      .container{
+        width: 700px;
+        margin: auto;
+      }
       .card-deck{
         width: 1100px;
         margin:auto;
@@ -122,14 +166,14 @@
     </style>
   </head>
  
-  <body>
+  <body clss="wrap">
     <header>
       <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" href="/">MyRestaurant</a>
+          <a class="navbar-brand" href="/">Muckjjal</a>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
