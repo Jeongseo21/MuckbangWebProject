@@ -21,7 +21,7 @@
             <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
             <p class="card-text"><small class="text-muted">TV-People</small></p>
             <p class="card-text"><small class="text-muted">2020-05-26</small></p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
           </div>
         </div>
         <div class="card">
@@ -45,7 +45,7 @@
             </div>
           </div>
       </div>
-      <br><br>
+      
       <div class="card-deck">
         <div class="card">
           <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
@@ -110,6 +110,7 @@
           </div>
       </div>
       </div>
+      
       <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -122,64 +123,69 @@
             <div class="modal-body">
               <form>
                 <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">식당 이름 : </label>
-                  <input type="text" class="form-control" id="recipient-name">
+                  <label for="restaurant" class="col-form-label">영상 제목 : </label>
+                  <input type="text" class="form-control" name="title">
                 </div>
                 <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">분류 : </label> &nbsp;&nbsp;
+                  <label for="restaurant" class="col-form-label">식당 이름 : </label>
+                  <input type="text" class="form-control" name="restaurant">
+                </div>
+                <div class="form-group">
+                  <label for="food_catg" class="col-form-label">분류 : </label> &nbsp;&nbsp;
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="한식">
-                    <label class="form-check-label" for="inlineRadio1">한식</label>
+                    <input class="form-check-input" type="radio" name="food_catg" id="ko" value="한식">
+                    <label class="form-check-label" for="ko">한식</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="중식">
-                    <label class="form-check-label" for="inlineRadio2">중식</label>
+                    <input class="form-check-input" type="radio" name="food_catg" id="chi" value="중식">
+                    <label class="form-check-label" for="chi">중식</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="양식">
-                    <label class="form-check-label" for="inlineRadio3">양식</label>
+                    <input class="form-check-input" type="radio" name="food_catg" id="itali" value="양식">
+                    <label class="form-check-label" for="itali">양식</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="일식">
-                    <label class="form-check-label" for="inlineRadio3">일식</label>
+                    <input class="form-check-input" type="radio" name="food_catg" id="japn" value="일식">
+                    <label class="form-check-label" for="japn">일식</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="분식">
-                    <label class="form-check-label" for="inlineRadio3">분식</label>
+                    <input class="form-check-input" type="radio" name="food_catg" id="ko_sub" value="분식">
+                    <label class="form-check-label" for="ko_sub">분식</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="recipient-name" class="col-form-label">위치 : </label> &nbsp;&nbsp;
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOption" id="inlineRadio1" value="신촌,홍대">
-                    <label class="form-check-label" for="inlineRadio1">신촌,홍대</label>
+                    <input class="form-check-input" type="radio" name="location" id="shinchon" value="신촌,홍대">
+                    <label class="form-check-label" for="shinchon">신촌,홍대</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOption" id="inlineRadio2" value="강남,역삼">
-                    <label class="form-check-label" for="inlineRadio2">강남,역삼</label>
+                    <input class="form-check-input" type="radio" name="location" id="gangnam" value="강남,역삼">
+                    <label class="form-check-label" for="gangnam">강남,역삼</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOption" id="inlineRadio3" value="일산,화정">
-                    <label class="form-check-label" for="inlineRadio3">일산,화정</label>
+                    <input class="form-check-input" type="radio" name="location" id="ilsan" value="일산,화정">
+                    <label class="form-check-label" for="ilsan">일산,화정</label>
                   </div>
                   <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="inlineRadioOption" id="inlineRadio4" value="기타">
-                    <label class="form-check-label" for="inlineRadio3">기타</label>
+                    <input class="form-check-input" type="radio" name="location" id="etc" value="기타">
+                    <label class="form-check-label" for="etc">기타</label>
                   </div>
                 </div>
                 <div class="form-group">
                   <label for="message-text" class="col-form-label">메모 : </label>
-                  <textarea class="form-control" id="message-text"></textarea>
+                  <textarea class="form-control" id="message-text" placeholder="메모를 남겨보세요"></textarea>
                 </div>
               </form>
             </div>
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button type="button" class="btn btn-primary">저장</button>
+              <button type="submit" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="submit" class="btn btn-primary" onclick="getInputValue()">저장</button>
             </div>
           </div>
         </div>
       </div>
+      
       
      
 </div>

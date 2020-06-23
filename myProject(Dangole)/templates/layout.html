@@ -67,35 +67,35 @@
                                       <div class="card">
                                       <img class="card-img-top" src="${img_url1}" alt="Card image cap">
                                       <div class="card-body">
-                                        <a href="https://www.youtube.com/watch?v=${videoId1}"><h5 class="card-title">${title1}</h5></a>
+                                        <a href="https://www.youtube.com/watch?v=${videoId1}" target="_blank"><h5 name="title">${title1}</h5></a>
                                         <p class="card-text">${desc1}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle1}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime1}</small></p>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
+                                        <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" onclick="save()">보관함에 저장</button>
                                       </div>
                                     </div>
                                     
                                     <div class="card">
                                       <img class="card-img-top" src="${img_url2}" alt="Card image cap">
                                       <div class="card-body">
-                                        <a href="https://www.youtube.com/watch?v=${videoId2}"><h5 class="card-title">${title2}</h5></a>
+                                        <a href="https://www.youtube.com/watch?v=${videoId2}" target="_blank"><h5 class="card-title">${title2}</h5></a>
                                         
                                         <p class="card-text">${desc2}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle2}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime2}</small></p>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" >보관함에 저장</button>
                                       </div>
                                     </div>
                                     
                                     <div class="card">
                                       <img class="card-img-top" src="${img_url3}" alt="Card image cap">
                                       <div class="card-body">
-                                        <a href="https://www.youtube.com/watch?v=${videoId3}"><h5 class="card-title">${title3}</h5></a>
+                                        <a href="https://www.youtube.com/watch?v=${videoId3}" target="_blank"><h5 class="card-titl">${title3}</h5></a>
                                         
                                         <p class="card-text">${desc3}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle3}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime3}</small></p>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" >보관함에 저장</button>
                                       </div>
                                     </div>
                                     </div><br>`
@@ -105,6 +105,67 @@
                 }
             }
         });
+      }
+      function save(){
+        var title = $('input[name=title]').val();
+        alert(title)
+        let temp_html = `
+                  <label for="restaurant" class="col-form-label">영상 제목 : </label>
+                  <input type="text" class="form-control" name="title" value="${title}">`
+        
+        $('#title_save').append(temp_html)
+
+      }
+      function getInputValue(){
+
+        $('#card-box').empty()
+
+        var title = $('input[name=title]').val();
+        var restaurant = $('input[name=restaurant]').val();
+        var food_catg = $('input[name=food_catg]').val();
+        var location = $('input[name=location]').val();
+        var memo = $('#message-text').val();
+        alert(title+restaurant+food_catg+location+memo)
+
+        $.ajax({
+          type: "POST",
+          url: "/mypage/getContents",
+          data: { 'title_give':title, 'restaurant_give':restaurant, 'food_catg_give':food_catg,'location_give':location,'memo_give':memo},
+          success: function (response) {
+              if (response['result'] == 'success') {
+                let video = response['video']
+                alert(video)
+
+                let videoId = video['videoId']
+                let title = video['title']
+                let desc = video['desc']
+                let img_url = video['img_url']
+                let channelTitle = video['channelTitle']
+                let publishTime= video['publishTime']
+
+                
+                let temp_html = `<div class="card-deck">
+                                      <div class="card">
+                                      <img class="card-img-top" src="${img_url}" alt="Card image cap">
+                                      <div class="card-body">
+                                        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank"><h5 class="card-title">${title}</h5></a>
+                                        <p class="card-text">${desc}</p>
+                                        <p class="card-text"><small class="text-muted">${channelTitle}</small></p>
+                                        <p class="card-text"><small class="text-muted">${publishTime}</small></p>
+                                        <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" onclick="save()">보관함에 저장</button>
+                                      </div>
+                                    </div>`
+                                
+                $('#card-box').append(temp_html) 
+              }
+          }
+        });
+
+      }
+      function like_star(name){
+      // 1. 서버에 1) POST 방식으로, 2) /api/like 라는 url에, 3) name_give라는 이름으로 name을 전달합니다.
+      // 참고) POST 방식이므로 data: {'name_give': name} 과 같은 양식이 되어야합니다!
+        
       }
     </script>
     <style>
