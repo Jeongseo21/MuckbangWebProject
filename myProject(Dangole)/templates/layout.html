@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8">
     <!-- Webpage Title -->
-    <title>한정서_Muckjjal</title>
+    <title>한정서_먹방커뮤니티</title>
 
     <!-- Required meta tags -->
     <meta charset="utf-8">
@@ -20,17 +20,44 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <title>Dangole</title>
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+
+        function openclose() {
+            let status = $('#post-box').css('display');
+            if (status === 'block') {
+                $('#post-box').hide();
+            } else {
+                $('#post-box').show();
+            }
+        }
+
+    </script>
+
     <script>
       $(document).ready(function() {
-        // index.html 로드가 완료되면 자동으로 show_star() 함수를 호출합니다.
+        // index.html 로드가 완료되면 자동으로 show_videos() 함수를 호출합니다.
         show_videos();
+        getMessages();
       });
       
       function show_videos(){
-        // 1. #star_box의 내부 html 태그를 모두 삭제합니다.
+        // 1. #video_box의 내부 html 태그를 모두 삭제합니다.
         $('#video-box').empty()
       
-        // 2. 서버에 1) GET 방식으로, 2) /api/list 라는 주소로 star_list를 요청합니다.
+        // 2. 서버에 1) GET 방식으로, 2) /list/getVideo 라는 주소로 videos_list를 요청합니다.
         $.ajax({
             type: "GET",
             url: "/list/getVideo",
@@ -65,7 +92,7 @@
                     let channelTitle3 = video3['channelTitle']
                     let publishTime3 = video3['publishTime']
       
-                    // 6. 영화인 카드를 만듭니다.
+                    // 6. 영상 카드를 만듭니다.
                     let temp_html = ` <div class="card-deck">
                                       <div class="card">
                                       <img class="card-img-top" src="${img_url1}" alt="Card image cap">
@@ -103,95 +130,170 @@
                                     </div>
                                     </div><br>`
       
-                    // 7. #star-box에 temp_html을 붙입니다.
+                    // 7. #video-box에 temp_html을 붙입니다.
                     $('#video-box').append(temp_html)
                 }
             }
         });
       }
       
-      function save(){
-        $('#title_save').empty()
-
-        var title = $('#title').text();
-        alert(title)
-        let temp_html = `
-                  <label for="restaurant" class="col-form-label">영상 제목 : </label>
-                  <input type="text" class="form-control" name="title" value="${title}">`
-        
-        $('#title_save').append(temp_html)
-
-        $.ajax({
-          type: "POST",
-          url: "/mypage/getContents",
-          data: { 'title_give':title},
-          success: function (response) {
-            alert("title넘기기 성공")
-          }
-      })
+      function isValidContents(contents){
+        if(contents == ''){
+          alert('내용을 입력해주세요');
+          return false;
+        }
+        if(contents.trim().length > 200){
+          alert('공백 포함 200자 이하로 입력해주세요.');
+          return false;
+        }
+        return true;
       }
-     
-      function getInputValue(){
 
-        $('#card-box').empty()
+      
+      //랜덤으로 유저이름을 생성
+      function randomName(length){
+        let result='';
+        let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz1234567890'
+        let charactersLength = characters.length;
+        //길에에 맞게 문자열 만들기
+        for(let i = 0; i<length; i++){
+          //0보다 같거나 크고 chractersLength보다 짧은 문자열 만들기
+          let number = Math.random()*charactersLength;
+          //number를 정수로 만들기
+          let index = Math.floor(number)
+          //index 위치의 문자열 하나를 result에 더하기
+          result += characters.charAt(index);
+        }
+        return result; //result를 반환한다.
+      }
 
-        var title = $('#title').text();
-        var restaurant = $('input[name=restaurant]').val();
-        var food_catg = $('input[name=food_catg]').val();
-        var location = $('input[name=location]').val();
-        var memo = $('textarea#message-text').val();
-        alert(title+restaurant+food_catg+location+memo)
 
+      function writePost(){
+        let contents = $('#contents').val();
+
+        if(isValidContents(contents) === false){
+          return;
+        }
+
+        let username = randomName(6);
+        
         $.ajax({
           type: "POST",
-          url: "/mypage/getContents",
-          data: { 'title_give':title, 'restaurant_give':restaurant, 'food_catg_give':food_catg,'location_give':location,'memo_give':memo},
-          success: function (response) {
-              if (response['result'] == 'success') {
-                let video = response['video']
-                alert(video)
+          url: "/message",
+          data: {'username_give':username, 'contents_give':contents},
+          success: function(response){
+            if(response['result'] == 'success'){
+              
+              window.location.reload();
+            }
+          }
+        })
+      }
 
-                let videoId = video['videoId']
-                let title = video['title']
-                let desc = video['desc']
-                let img_url = video['img_url']
-                let channelTitle = video['channelTitle']
-                let publishTime= video['publishTime']
+      function getMessages(){
+        $('#cards-box').empty();
 
-                
-                let temp_html = `<div class="card-deck">
-                                      <div class="card">
-                                      <img class="card-img-top" src="${img_url}" alt="Card image cap">
-                                      <div class="card-body">
-                                        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank"><h5 class="card-title">${title}</h5></a>
-                                        <p class="card-text">${desc}</p>
-                                        <p class="card-text"><small class="text-muted">${channelTitle}</small></p>
-                                        <p class="card-text"><small class="text-muted">${publishTime}</small></p>
-                                        <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" onclick="save()">보관함에 저장</button>
-                                      </div>
-                                      
-                                    </div>`
-                                
-                $('#card-box').append(temp_html) 
+        $.ajax({
+          type: "GET",
+          url: "/message",
+          data: {},
+          success: function(response){
+            if(response['result']=='success'){
+              let messages = response['messages'];
+              
+              for(let i = 0; i<messages.length; i++){
+                let message = messages[i];
+                let username = message['username'];
+                let contents = message['contents'];
+                let created_at = message['created_at'];
+
+                addHTML(username, contents, created_at);
               }
+            }else{
+              alert('메세지를 불러오지 못했습니다.')
+            }
+          }
+        })
+      }
+      //cards-box에 html붙이는 함수
+      function addHTML(username, contents, created_at){
+        let tempHtml = makeMessage(username, contents, created_at)
+        $('#cards-box').append(tempHtml);
+      }
+      //붙일 html만들기
+      function makeMessage(username, contents, created_at){
+        return `<div class="card custom-card">
+                <div class="card-body">
+                    <textarea id="${username}-textarea" class="area-edit" cols="80"></textarea>
+                    <h5 id="${username}-contents" class="card-title">${contents}</h5>
+                    <h6 id="${username}-username"class="card-subtitle mb-2 text-muted">${username}</h6>
+                    <h6 class="card-subtitle mb-2 text-muted">${created_at}</h6>
+                </div>
+                <footer class="card-footer">
+                    <a id="${username}-edit" href="#" class="card-footer-item" onclick="editPost('${username}')">수정</a>
+                    <a id="${username}-cancel" href="#" class="card-footer-item area-edit" onclick="hideEdits('${username}')">취소</a>
+                    <a id="${username}-submit" href="#" class="card-footer-item area-edit" onclick="submitEdit('${username}')">수정완료</a>
+                </footer>
+            </div>`
+      }
+
+      function editPost(username){
+        showEdits(username);
+        let contents = $(`#${username}-contents`).text();
+        $(`#${username}-textarea`).val(contents);
+      }
+
+      function showEdits(username){
+        //수정 입력칸, 수업완료버튼, 취소 버튼 보여주기
+        $(`#${username}-textarea`).show();
+        $(`#${username}-submit`).show();
+        $(`#${username}-cancel`).show();
+
+        //메모 내용, 수정 버튼 숨기기
+        $(`#${username}-contents`).hide();
+        $(`#${username}-edit`).hide();
+      }
+
+      function hideEdits(username) {
+		    // 수정 입력 칸, 수정완료 버튼, 취소 버튼을 숨긴다.
+        $(`#${username}-textarea`).hide();
+        $(`#${username}-submit`).hide();
+        $(`#${username}-cancel`).hide();
+	
+		    // 메모 내용, 수정 버튼을 보여준다.
+        $(`#${username}-contents`).show();
+        $(`#${username}-edit`).show();
+      }
+
+      function submitEdit(username) {
+		    // 수정된 메모 내용을 가져오고 올바른지 검사한다.
+        let contents = $(`#${username}-textarea`).val();
+        if (isValidContents(contents) == false) {
+          return;
+        }
+        $.ajax({
+        type: "POST",
+        url: "/message/edit",
+        data: { username_give: username, contents_give: contents },
+        success: function (response) {
+            if (response['result'] == 'success') {
+                
+								// 변경된 메모를 보기 위해 창을 새로고침한다.
+                window.location.reload();
+            } else {
+                alert('메시지 변경에 실패했습니다.');
+            }
           }
         });
+      }
 
-      }
-      function like_star(name){
-      // 1. 서버에 1) POST 방식으로, 2) /api/like 라는 url에, 3) name_give라는 이름으로 name을 전달합니다.
-      // 참고) POST 방식이므로 data: {'name_give': name} 과 같은 양식이 되어야합니다!
-        
-      }
     </script>
     <style>
       .index{
         background-color : #D6D6D6;
         
       }
-      .wrap{
-        background-color :#D6D6D6;
-      }
+      
 
       .display-4{
         border-radius : 20px;
@@ -244,13 +346,38 @@
         width: 1100px;
         margin:auto;
       }
-      .carousel{
-        width:  400px;
-        margin:auto;
-      }
+      
       .row{
         width:1100px;
         margin:auto;
+      }
+      
+      .area-edit {
+            display: none;
+        }
+
+      .wrap {
+          width: 700px;
+          margin: 10px auto;
+      }
+
+      #contents {
+          width: 700px;
+      }
+
+      .area-write {
+          display: flex;
+          flex-direction: column;
+          align-items: flex-end;
+          justify-content: center;
+      }
+
+      .custom-card {
+          margin: 20px 0 20px 0;
+      }
+
+      #post-box {
+          display: none;
       }
     </style>
   </head>
@@ -262,7 +389,7 @@
           <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
-          <a class="navbar-brand" href="/">Muckjjal</a>
+          <a class="navbar-brand" href="/">먹방짤저장소</a>
           <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
             <li class="nav-item active">
               <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
@@ -271,7 +398,7 @@
               <a class="nav-link" href="/list">Videos</a>
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="/mypage">Mypage</a>
+              <a class="nav-link" href="/community">Community</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="https://www.youtube.com">Youtube</a>

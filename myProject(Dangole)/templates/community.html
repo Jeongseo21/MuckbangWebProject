@@ -1,0 +1,63 @@
+{% extends 'layout.html' %}
+ 
+{% block content %}
+<div class="index" >
+    <!-- <img src="{{ url_for('static', filename='list.jpg') }}"/> -->
+    <div class="jumbotron jumbotron-fluid2" align="center">
+        <div class="container">
+          <h1 class="display-4"><b>먹방 커뮤니티</b></h1>
+          <p class="middle">오늘 저녁 맛집탐방 어때요?</p>
+          
+        </div>
+      </div>
+      <br>
+      <br>
+
+      <div class="wrap">
+        <div class="header">
+          <p>
+          <button onclick="openclose()" type="button" class="btn btn-outline-secondary"><b>글 쓰기</b></button>
+        </p>  
+        </div>
+        <div id="post-box">
+            <div class="area-write">
+                <textarea placeholder="여기에 입력해주세요" name="contents" id="contents" cols="30" rows="10"></textarea>
+                <br>
+                <button class="btn btn-outline-secondary" onclick="writePost()">완료</button>
+                <br>
+            </div>
+        </div>
+        <div id="cards-box" class="area-read">
+            <div class="card">
+                <header class="card-header">
+                    <p class="card-header-title">
+                        Component
+                    </p>
+                    <a href="#" class="card-header-icon" aria-label="more options">
+                        <span class="icon">
+                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </header>
+                <div class="card-content">
+                    <div class="content">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus nec iaculis mauris.
+                        <a href="#">@bulmaio</a>. <a href="#">#css</a> <a href="#">#responsive</a>
+                        <br>
+                        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                    </div>
+                </div>
+                <footer class="card-footer">
+                    <a href="#" class="card-footer-item">Save</a>
+                    <a href="#" class="card-footer-item">Edit</a>
+                    <a href="#" class="card-footer-item">Delete</a>
+                </footer>
+            </div>
+        </div>
+        <br>
+    </div>
+</body>
+     
+</div>
+
+{% endblock %}

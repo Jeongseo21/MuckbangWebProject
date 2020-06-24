@@ -1,5 +1,6 @@
 from pymongo import MongoClient
 from flask import Flask, render_template,jsonify,request
+from datetime import datetime, timedelta
 app = Flask(__name__)
 
 client = MongoClient('localhost', 27017)
@@ -20,40 +21,43 @@ def get_videos():
 
   return jsonify({'result': 'success','videos_list':videos})
 
-@app.route('/mypage')
-def mypage_get():
-  return render_template('mypage.html')
+@app.route('/community')
+def community_home():
+  return render_template('community.html')
 
-@app.route('/mypage/getContents', methods=['POST'])
-def getContents():
-    # 1. 클라이언트가 전달한 _give를 _receive 변수에 넣는다.
-    title_receive = request.form['title_give']
-    restaurant_receive = request.form['restaurant_give']
-    food_catg_receive = request.form['food_catg_give']
-    location_receive = request.form['location_give']
-    memo_receive = request.form['memo_give']
+@app.route('/message', methods=['POST'])
+def set_message():
+  username_receive = request.form['username_give']
+  contents_receive = request.form['contents_give']
 
-    # 2. mystar 목록에서 find_one으로 title title_receive와 일치하는 video를 찾고 리턴.
-    video = db.HaetNim.find_one({'title':title_receive},{'_id':0})
-    
-    
-    #3. db에 받아온 box contents를 저장하고 바로 리턴.
-    doc = {
-      'restaurant' : restaurant_receive,
-      'food_catg' : food_catg_receive,
-      'location' : location_receive,
-      'memo' : memo_receive
-    }
-    db.box_contents.insert_one(doc) #insert
-    contents = db.box_contents.find_one({'restrant':restaurant_receive},{'_id':0}) #find
+  doc = {
+    'username': username_receive,
+    'contents': contents_receive,
+    #현재 시각도 db에 저장
+    'created_at': datetime.now()
+  }
+  db.messages.insert_one(doc)
 
-    # 5. 성공하면 success 메시지를 반환합니다.
-    return jsonify({'result': 'success','video':video, 'contents':contents})
+  return jsonify({'result':'success', 'msg':'메세지 작성을 완료하였습니다.'})
 
-# @app.route('/list', methods=['POST'])
-# def list_post():
+@app.route('/message')
+def get_messages():
+  #현재 시각 구하기
+  date_now = datetime.now()
+  #24시간 전 구하기
+  date_before = date_now - timedelta(days=1)
+  messages = list(db.messages.find({'created_at':{'$gte':date_before, '$lte':date_now}},{'_id': 0}).sort('created_at',-1))
+
+  return jsonify({'result':'success', 'messages':messages})
+
+@app.route('/message/edit', methods=["POST"])
+def edit_message():
+  username_receive = request.form['username_give']
+  contents_receive = request.form['contents_give']
+  db.messages.update_one({'username':username_receive},
+                        {'$set': {'contents':contents_receive, 'created_at':datetime.now()}})
   
-#    return jsonify({'result':'success', 'msg': '이 요청은 POST!'})
+  return jsonify({'result':'success', 'msg':'메세지 변경에 성공하였습니다'})
 
 if __name__ == '__main__':  
    app.run('0.0.0.0',port=5000,debug=True)
