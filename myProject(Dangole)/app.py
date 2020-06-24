@@ -27,7 +27,7 @@ def mypage_get():
 @app.route('/mypage/getContents', methods=['POST'])
 def getContents():
     # 1. 클라이언트가 전달한 _give를 _receive 변수에 넣는다.
-    
+    title_receive = request.form['title_give']
     restaurant_receive = request.form['restaurant_give']
     food_catg_receive = request.form['food_catg_give']
     location_receive = request.form['location_give']

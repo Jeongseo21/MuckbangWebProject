@@ -11,7 +11,10 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-		
+    
+    <!-- google font-family-->
+    <link href="https://fonts.googleapis.com/css2?family=Do+Hyeon&family=East+Sea+Dokdo&family=Gamja+Flower&family=Song+Myung&display=swap" rel="stylesheet">
+
 		<!-- JS -->		
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -67,35 +70,35 @@
                                       <div class="card">
                                       <img class="card-img-top" src="${img_url1}" alt="Card image cap">
                                       <div class="card-body">
-                                        <a href="https://www.youtube.com/watch?v=${videoId1}" target="_blank"><h5 name="title">${title1}</h5></a>
+                                        <a href="https://www.youtube.com/watch?v=${videoId1}" target="_blank"><h5 id="title">${title1}</h5></a>
                                         <p class="card-text">${desc1}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle1}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime1}</small></p>
-                                        <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" onclick="save()">보관함에 저장</button>
+                                        <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" onclick="save()"><b>보관함에 저장</b></button>
                                       </div>
                                     </div>
                                     
                                     <div class="card">
                                       <img class="card-img-top" src="${img_url2}" alt="Card image cap">
                                       <div class="card-body">
-                                        <a href="https://www.youtube.com/watch?v=${videoId2}" target="_blank"><h5 class="card-title">${title2}</h5></a>
+                                        <a href="https://www.youtube.com/watch?v=${videoId2}" target="_blank"><h5 id="title">${title2}</h5></a>
                                         
                                         <p class="card-text">${desc2}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle2}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime2}</small></p>
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" >보관함에 저장</button>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" onclick="save()"><b>보관함에 저장</b></button>
                                       </div>
                                     </div>
                                     
                                     <div class="card">
                                       <img class="card-img-top" src="${img_url3}" alt="Card image cap">
                                       <div class="card-body">
-                                        <a href="https://www.youtube.com/watch?v=${videoId3}" target="_blank"><h5 class="card-titl">${title3}</h5></a>
+                                        <a href="https://www.youtube.com/watch?v=${videoId3}" target="_blank"><h5 id="title">${title3}</h5></a>
                                         
                                         <p class="card-text">${desc3}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle3}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime3}</small></p>
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" >보관함에 저장</button>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" onclick="save()"><b>보관함에 저장</b></button>
                                       </div>
                                     </div>
                                     </div><br>`
@@ -106,8 +109,11 @@
             }
         });
       }
+      
       function save(){
-        var title = $('input[name=title]').val();
+        $('#title_save').empty()
+
+        var title = $('#title').text();
         alert(title)
         let temp_html = `
                   <label for="restaurant" class="col-form-label">영상 제목 : </label>
@@ -115,16 +121,25 @@
         
         $('#title_save').append(temp_html)
 
+        $.ajax({
+          type: "POST",
+          url: "/mypage/getContents",
+          data: { 'title_give':title},
+          success: function (response) {
+            alert("title넘기기 성공")
+          }
+      })
       }
+     
       function getInputValue(){
 
         $('#card-box').empty()
 
-        var title = $('input[name=title]').val();
+        var title = $('#title').text();
         var restaurant = $('input[name=restaurant]').val();
         var food_catg = $('input[name=food_catg]').val();
         var location = $('input[name=location]').val();
-        var memo = $('#message-text').val();
+        var memo = $('textarea#message-text').val();
         alert(title+restaurant+food_catg+location+memo)
 
         $.ajax({
@@ -154,6 +169,7 @@
                                         <p class="card-text"><small class="text-muted">${publishTime}</small></p>
                                         <button type="submit" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" onclick="save()">보관함에 저장</button>
                                       </div>
+                                      
                                     </div>`
                                 
                 $('#card-box').append(temp_html) 
@@ -178,12 +194,27 @@
       }
 
       .display-4{
+        border-radius : 20px;
+        background-color:whitesmoke;
+        background-color: rgba( 255, 255, 255, 0.7 )
+        
+      }
+      .btn{
+        font-family: 'Gamja Flower', cursive;
+
+      }
+      .middle{
+        border-radius : 20px;
+        width: 500px;
+        margin: auto;
+        font-family: 'Gamja Flower', cursive;
         background-color: whitesmoke;
-        background-color: rgba( 255, 255, 255, 0.5 )
+        background-color: rgba( 255, 255, 255, 0.7 )
+        
       }
       .lead{
         background-color: whitesmoke;
-        background-color: rgba( 255, 255, 255, 0.5 )
+        background-color: rgba( 255, 255, 255, 0.7 )
       }
       .jumbotron-fluid{
         
@@ -204,6 +235,8 @@
         background-image: url("../static/pizza1500.png");
       }
       .container{
+        font-family: 'Song Myung', serif;
+        font-size: x-large;
         width: 700px;
         margin: auto;
       }
