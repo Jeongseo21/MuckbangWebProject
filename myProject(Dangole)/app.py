@@ -59,6 +59,15 @@ def edit_message():
   
   return jsonify({'result':'success', 'msg':'메세지 변경에 성공하였습니다'})
 
+
+@app.route('/message/delete', methods=["POST"])
+def delete_message():
+  username_receive = request.form['username_give']
+  
+  db.messages.delete_one({'username':username_receive})
+  
+  return jsonify({'result':'success', 'msg':'메세지 삭제에 성공하였습니다'})
+
 if __name__ == '__main__':  
    app.run('0.0.0.0',port=5000,debug=True)
 

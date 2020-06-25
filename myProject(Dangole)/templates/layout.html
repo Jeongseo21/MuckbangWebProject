@@ -139,8 +139,8 @@
           alert('내용을 입력해주세요');
           return false;
         }
-        if(contents.trim().length > 200){
-          alert('공백 포함 200자 이하로 입력해주세요.');
+        if(contents.trim().length > 500){
+          alert('공백 포함 500자 이하로 입력해주세요.');
           return false;
         }
         return true;
@@ -224,15 +224,15 @@
                     <textarea id="${username}-textarea" class="area-edit" cols="80"></textarea>
                     <h5 id="${username}-contents" class="card-title">${contents}</h5>
                     <br>
-                    <h6 id="${username}-username"class="card-subtitle mb-2 text-muted">#익명</h6>
+                    <h6 id="${username}-username"class="card-subtitle mb-2 text-muted">#익명(${username})</h6>
                     <h6 class="card-subtitle mb-2 text-muted">#${created_at}</h6>
                 </div>
                 <footer class="card-footer">
                   <div class="card-footer-footer" align="right">
                     <a id="${username}-edit" href="#" class="card-footer-item" onclick="editPost('${username}')">수정</a>&nbsp &nbsp &nbsp 
-                    <a id="${username}-edit" href="#" class="card-footer-item" onclick="editPost('${username}')">삭제</a>
+                    <a id="${username}-delete" href="#" class="card-footer-item" onclick="deletePost('${username}')">삭제</a>
                   </div>
-                    <a id="${username}-cancel" href="#" class="card-footer-item area-edit" onclick="hideEdits('${username}')">취소</a>
+                    <a id="${username}-cancel" href="#" class="card-footer-item area-edit" onclick="hideEdits('${username}')">취소</a></a>&nbsp &nbsp &nbsp 
                     <a id="${username}-submit" href="#" class="card-footer-item area-edit" onclick="submitEdit('${username}')">수정완료</a>
                   
                 </footer>
@@ -289,6 +289,24 @@
         });
       }
 
+      function deletePost(username){
+        let delete_one = $(`#${username}-delete`).text();
+        
+        $.ajax({
+        type: "POST",
+        url: "/message/delete",
+        data: { username_give: username},
+        success: function (response) {
+            if (response['result'] == 'success') {
+								// 변경사항 저정, 새로고침
+                location.reload();
+            } else {
+                alert('메시지 삭제에 실패했습니다.');
+            }
+          }
+        });
+      }
+
     </script>
     <style>
       .index{
@@ -331,12 +349,12 @@
         
         width: 1500px;
         margin: auto;
-        background-image: url("../static/pizza1500.png");
+        background-image: url("../static/pizza-wide.jpg");
       }
       .jumbotron-fluid2{
         width: 1500px;
         margin: auto;
-        background-image: url("../static/pizza1500.png");
+        background-image: url("../static/pizza-wide.jpg");
       }
       .container{
         font-family: 'Song Myung', serif;
