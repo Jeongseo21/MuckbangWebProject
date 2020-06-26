@@ -14,6 +14,18 @@ def home():
 def list_home():
   return render_template('list.html')
 
+@app.route('/mypage')
+def mypage_home():
+  return render_template('mypage.html')
+
+@app.route('/mypage/getTitle', methods=['POST'])
+def getTitle():
+  title_receive = request.form['title_give']
+  
+  title_one = list(db.HaetNim.find({'title':title_receive},{'_id':0}))
+
+  return jsonify({'result':'success', 'title_one':title_one})
+
 @app.route('/list/getVideo' ,methods=['GET'])
 def get_videos():
 

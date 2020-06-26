@@ -1,0 +1,67 @@
+{% extends 'layout.html' %}
+ 
+{% block content %}
+
+<div class="index" >
+    
+    <div class="jumbotron jumbotron-fluid1" align="center">
+        <div class="container">
+          <h1 class="display-4"><b>내 보관함</b></h1>
+          <p class="middle">영상을 메모와 함께 보관하세요</p>
+          
+        </div>
+    </div>  
+      <br><br>
+    <div class="wrap-mypage">
+        <div >
+            <div id="mypage-box">
+                <dev class="header" id="mypage-header">
+                    <p class="header-title">
+                        영상 썸네일<br>
+                        영상 title
+                    </p>
+                    <a href="#" class="header-icon" aria-label="more options">
+                        <span class="icon">
+                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                    </a>
+                </dev>
+                <div class="content">
+                    <div class="mycontent">
+                        db에서 받아온 contents 내용
+                        <br>
+                        <time datetime="2016-1-1">11:09 PM - 1 Jan 2016</time>
+                    </div>
+                </div>
+                <footer class="footer">
+                    <a href="#" class="card-footer-item">Save</a>
+                    <a href="#" class="card-footer-item">Edit</a>
+                    <a href="#" class="card-footer-item">Delete</a>
+                </footer>
+            </div>
+        </div>
+        <br>
+    </div>
+    
+      <!-- <div class="card custom-card">
+        <div class="card-body">
+            <textarea id="${username}-textarea" class="area-edit" cols="80"></textarea>
+            <h5 id="${username}-contents" class="card-title">${영상썸네일}</h5>
+            <br>
+            <h6 class="card-subtitle mb-2 text-muted">#${created_at}</h6>
+        </div>
+        <footer class="card-footer">
+          <div class="card-footer-footer" align="right">
+            <a id="${username}-edit" href="#" class="card-footer-item" onclick="editPost('${username}')">수정</a>&nbsp &nbsp &nbsp 
+            <a id="${username}-delete" href="#" class="card-footer-item" onclick="deletePost('${username}')">삭제</a>
+          </div>
+            <a id="${username}-cancel" href="#" class="card-footer-item area-edit" onclick="hideEdits('${username}')">취소</a></a>&nbsp &nbsp &nbsp 
+            <a id="${username}-submit" href="#" class="card-footer-item area-edit" onclick="submitEdit('${username}')">수정완료</a>
+          
+        </footer>
+    </div> -->
+      
+      
+     
+</div>
+{% endblock %}

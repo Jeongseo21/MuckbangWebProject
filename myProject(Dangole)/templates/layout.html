@@ -99,7 +99,7 @@
                                         <p class="card-text">${desc1}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle1}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime1}</small></p>
-                                        
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick="savePost('${title1}')">보관함에 저장</button>
                                       </div>
                                     </div>
                                     
@@ -111,7 +111,7 @@
                                         <p class="card-text">${desc2}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle2}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime2}</small></p>
-                                        
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
                                       </div>
                                     </div>
                                     
@@ -123,7 +123,7 @@
                                         <p class="card-text">${desc3}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle3}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime3}</small></p>
-                                        
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
                                       </div>
                                     </div>
                                     </div><br>`
@@ -134,6 +134,44 @@
         });
       }
       
+      function savePost(title){
+        //title을 받아왔음, ajax로 해당 영상 정보 가져오기
+        $('#mypage-header').empty();
+
+        $.ajax({
+          type: "POST",
+          url: "/mypage/getTitle",
+          data: {'title_give':title },
+          success: function(response){
+            if(response['result'] == 'success'){
+              let titles = response['title_one'];
+              
+              for(let i = 0; i<titles.length; i++){
+                let title_one = titles[i];
+                let title = title_one['title'];
+                let thumbnail = title_one['img_url']
+                
+                alert(title+thumbnail)
+                let temp_html = `<p class="header-title">
+                        ${title}<br>
+                        ${thumbnail} title
+                    </p>
+                    <a href="#" class="header-icon" aria-label="more options">
+                        <span class="icon">
+                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                        </span>
+                    </a>`
+                  
+                $('#mypage-header').append(temp_html);
+                alert("완료")
+              }
+              
+            }
+          }
+        })
+
+      }
+
       function isValidContents(contents){
         if(contents == ''){
           alert('내용을 입력해주세요');
@@ -377,12 +415,12 @@
         }
 
       .wrap {
-          width: 700px;
+          width: 800px;
           margin: 10px auto;
       }
 
       #contents {
-          width: 700px;
+          width: 800px;
       }
 
       .area-write {
@@ -398,6 +436,11 @@
 
       #post-box {
           display: none;
+      }
+
+      .wrap-mypage{
+        width: 1000px;
+        margin: auto;
       }
     </style>
   </head>
@@ -419,6 +462,9 @@
             </li>
             <li class="nav-item">
               <a class="nav-link" href="/community">Community</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/mypage">Mypage</a>
             </li>
             <li class="nav-item">
               <a class="nav-link" href="https://www.youtube.com">Youtube</a>
