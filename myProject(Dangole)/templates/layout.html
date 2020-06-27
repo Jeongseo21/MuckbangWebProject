@@ -136,11 +136,11 @@
       
       function savePost(title){
         //title을 받아왔음, ajax로 해당 영상 정보 가져오기
-        $('#mypage-header').empty();
+        $('#title_save').empty();
 
         $.ajax({
           type: "POST",
-          url: "/mypage/getTitle",
+          url: "/list/sendTitle",
           data: {'title_give':title },
           success: function(response){
             if(response['result'] == 'success'){
@@ -150,20 +150,20 @@
                 let title_one = titles[i];
                 let title = title_one['title'];
                 let thumbnail = title_one['img_url']
+                let videoId = title_one['videoId']
                 
                 alert(title+thumbnail)
-                let temp_html = `<p class="header-title">
-                        ${title}<br>
-                        ${thumbnail} title
-                    </p>
-                    <a href="#" class="header-icon" aria-label="more options">
-                        <span class="icon">
-                            <i class="fas fa-angle-down" aria-hidden="true"></i>
-                        </span>
-                    </a>`
+                let temp_html = `<label for="restaurant" class="col-form-label">영상 이름 : </label>
+                  <input type="text" class="form-control" name="title" value="${title}" disabled>
+
+                  <label for="restaurant" class="col-form-label">영상 썸네일 : </label>
+                  <input type="text" class="form-control" name="thumbnail" value="${thumbnail}" disabled>
+
+                  <label for="restaurant" class="col-form-label">영상 Id : </label>
+                  <input type="text" class="form-control" name="videoId" value="${videoId}" disabled>`
                   
-                $('#mypage-header').append(temp_html);
-                alert("완료")
+                $('#title_save').append(temp_html);
+                
               }
               
             }
@@ -172,6 +172,54 @@
 
       }
 
+      function getInputValue(){
+        var title = $('input[name=title]').val();
+        var thumbnail = $('input[name=thumbnail]').val();
+        var videoId = $('input[name=videoId]').val();
+        var restaurant = $('input[name=restaurant]').val();
+        var food_catg = $('input[name=food_catg]').val();
+        var location = $('input[name=location]').val();
+        var memo = $('textarea#message-text').val();
+        
+        alert(title+thumbnail+videoId+restaurant+food_catg+location+memo)
+
+        $.ajax({
+          type: "POST",
+          url: "/mypage/getTitle",
+          data: {'title_give':title, 'thumbnail_give':thumbnail, 'videoId_give':videoId, 
+                  'restaurant_give':restaurant, 'food_catg_give':food_catg, 'location_give':location, 'memo_give':memo},
+          success: function(response){
+            if(response['result'] == 'success'){
+              let myVideo = response['myVideo'];
+              
+              alert(저장완료)
+
+              // for(let i = 0; i<titles.length; i++){
+              //   let title_one = titles[i];
+              //   let title = title_one['title'];
+              //   let thumbnail = title_one['img_url']
+              //   let videoId = title_one['videoId']
+                
+              //   alert(title+thumbnail)
+              //   let temp_html = `<label for="restaurant" class="col-form-label">영상 이름 : </label>
+              //     <input type="text" class="form-control" name="title" value="${title}" disabled>
+
+              //     <label for="restaurant" class="col-form-label">영상 썸네일 : </label>
+              //     <input type="text" class="form-control" name="thumbnail" value="${thumbnail}" disabled>
+
+              //     <label for="restaurant" class="col-form-label">영상 Id : </label>
+              //     <input type="text" class="form-control" name="videoId" value="${videoId}" disabled>`
+                  
+              //   $('#title_save').append(temp_html);
+                
+              // }
+              
+            }
+          }
+        })
+
+        
+      }
       function isValidContents(contents){
         if(contents == ''){
           alert('내용을 입력해주세요');

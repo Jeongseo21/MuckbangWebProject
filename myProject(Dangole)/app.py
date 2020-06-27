@@ -21,6 +21,29 @@ def mypage_home():
 @app.route('/mypage/getTitle', methods=['POST'])
 def getTitle():
   title_receive = request.form['title_give']
+  thumbnail_receive = request.form['thumbnail_give']
+  videoId_receive = request.form['videoId_give']
+  restaurant_receive = request.form['restaurant_give']
+  food_catg_receive = request.form['food_catg_give']
+  location_receive = request.form['location_give']
+  memo_receive = request.form['memo_give']
+
+  doc = {
+    'title': title_receive,
+    'thumbnail': thumbnail_receive,
+    'videoId': videoId_receive,
+    'restaurant': restaurant_receive,
+    'food_catg': food_catg_receive,
+    'location': location_receive,
+    'memo' : memo_receive
+  }
+  db.mypage.insert_one(doc)
+  
+  return jsonify({'result':'success', 'msg':'내 보관함에 저장 완료'})
+
+@app.route('/list/sendTitle', methods=['POST'])
+def sendTitle():
+  title_receive = request.form['title_give']
   
   title_one = list(db.HaetNim.find({'title':title_receive},{'_id':0}))
 
