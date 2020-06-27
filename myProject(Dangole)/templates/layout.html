@@ -51,6 +51,7 @@
         // index.html 로드가 완료되면 자동으로 show_videos() 함수를 호출합니다.
         show_videos();
         getMessages();
+        show_memos();
       });
       
       function show_videos(){
@@ -111,7 +112,7 @@
                                         <p class="card-text">${desc2}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle2}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime2}</small></p>
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick="savePost('${title2}')">보관함에 저장</button>
                                       </div>
                                     </div>
                                     
@@ -123,7 +124,7 @@
                                         <p class="card-text">${desc3}</p>
                                         <p class="card-text"><small class="text-muted">${channelTitle3}</small></p>
                                         <p class="card-text"><small class="text-muted">${publishTime3}</small></p>
-                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
+                                        <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo" onclick="savePost('${title3}')">보관함에 저장</button>
                                       </div>
                                     </div>
                                     </div><br>`
@@ -185,41 +186,85 @@
 
         $.ajax({
           type: "POST",
-          url: "/mypage/getTitle",
+          url: "/list/saveMemo",
           data: {'title_give':title, 'thumbnail_give':thumbnail, 'videoId_give':videoId, 
                   'restaurant_give':restaurant, 'food_catg_give':food_catg, 'location_give':location, 'memo_give':memo},
           success: function(response){
             if(response['result'] == 'success'){
               let myVideo = response['myVideo'];
               
-              alert(저장완료)
+              alert("저장완료")
 
-              // for(let i = 0; i<titles.length; i++){
-              //   let title_one = titles[i];
-              //   let title = title_one['title'];
-              //   let thumbnail = title_one['img_url']
-              //   let videoId = title_one['videoId']
-                
-              //   alert(title+thumbnail)
-              //   let temp_html = `<label for="restaurant" class="col-form-label">영상 이름 : </label>
-              //     <input type="text" class="form-control" name="title" value="${title}" disabled>
-
-              //     <label for="restaurant" class="col-form-label">영상 썸네일 : </label>
-              //     <input type="text" class="form-control" name="thumbnail" value="${thumbnail}" disabled>
-
-              //     <label for="restaurant" class="col-form-label">영상 Id : </label>
-              //     <input type="text" class="form-control" name="videoId" value="${videoId}" disabled>`
-                  
-              //   $('#title_save').append(temp_html);
-                
-              // }
-              
             }
           }
         })
-
-        
       }
+      
+      function show_memos(){
+        // 1. #video_box의 내부 html 태그를 모두 삭제합니다.
+        $('#cards-mypage').empty()
+      
+        // 2. 서버에 1) GET 방식으로, 2) /list/getVideo 라는 주소로 videos_list를 요청합니다.
+        $.ajax({
+            type: "GET",
+            url: "/mypage/getMemo",
+            data: {},
+            success: function (response) {
+              if(response['result'] == 'success'){
+                let memos = response['memos_list']
+                
+                for (let i = 0; i < memos.length; i++) {
+                  let memo = memos[i]
+                  let title = memo['title']
+                  let thumbnail = memo['thumbnail']
+                  let videoId = memo['videoId']
+                  let restaurant = memo['restaurant']
+                  let food_catg = memo['food_catg']
+                  let location = memo['location']
+                  let memo_contents = memo['memo']
+                  let created_at = memo['created_at']
+                  
+      
+                    // 6. 영상 카드를 만듭니다.
+                  let temp_html = ` 
+                  <div class="card">
+                    <header class="card-header">
+                      <p class="card-header-title">
+                        <a href="https://www.youtube.com/watch?v=${videoId}" target="_blank"><h5>${title}</h5></a>
+                        
+                      </p>
+                      <a href="#" class="card-header-icon" aria-label="more options">
+                          <span class="icon">
+                            <i class="fas fa-angle-down" aria-hidden="true"></i>
+                          </span>
+                      </a>
+                    </header>
+                  <div class="card-content">
+                    <div class="content">
+                        #식당명 : ${restaurant}&nbsp&nbsp&nbsp
+                        #카테고리 : ${food_catg}&nbsp&nbsp&nbsp#위치 : ${location}<br>
+                        <hr>
+                        ${memo_contents}<br>
+                        <img src="${thumbnail}" width=100px align="right">
+                        <br>
+                        <time datetime="2016-1-1">${created_at}</time>
+                    </div>
+                  </div>
+                  <footer class="card-footer">
+                    <a href="#" class="card-footer-item">Save</a>
+                    <a href="#" class="card-footer-item">Edit</a>
+                    <a href="#" class="card-footer-item">Delete</a>
+                  </footer>
+                  </div><br>`
+                    // 7. #video-box에 temp_html을 붙입니다.
+                    $('#cards-mypage').append(temp_html)
+                }
+            }
+                
+            }
+        });
+      }
+      
       function isValidContents(contents){
         if(contents == ''){
           alert('내용을 입력해주세요');

@@ -18,8 +18,22 @@ def list_home():
 def mypage_home():
   return render_template('mypage.html')
 
-@app.route('/mypage/getTitle', methods=['POST'])
-def getTitle():
+@app.route('/mypage/getMemo' ,methods=['GET'])
+def get_Memo():
+
+  memos = list(db.mypage.find({},{'_id':0}).sort('created_at',-1))
+
+  return jsonify({'result': 'success','memos_list':memos})
+
+@app.route('/list/getVideo' ,methods=['GET'])
+def get_videos():
+
+  videos = list(db.HaetNim.find({},{'_id':0}))
+
+  return jsonify({'result': 'success','videos_list':videos})
+
+@app.route('/list/saveMemo', methods=['POST'])
+def saveMemo():
   title_receive = request.form['title_give']
   thumbnail_receive = request.form['thumbnail_give']
   videoId_receive = request.form['videoId_give']
@@ -35,11 +49,14 @@ def getTitle():
     'restaurant': restaurant_receive,
     'food_catg': food_catg_receive,
     'location': location_receive,
-    'memo' : memo_receive
+    'memo' : memo_receive,
+    'created_at': datetime.now()
   }
   db.mypage.insert_one(doc)
   
   return jsonify({'result':'success', 'msg':'내 보관함에 저장 완료'})
+
+
 
 @app.route('/list/sendTitle', methods=['POST'])
 def sendTitle():
@@ -49,12 +66,7 @@ def sendTitle():
 
   return jsonify({'result':'success', 'title_one':title_one})
 
-@app.route('/list/getVideo' ,methods=['GET'])
-def get_videos():
 
-  videos = list(db.HaetNim.find({},{'_id':0}))
-
-  return jsonify({'result': 'success','videos_list':videos})
 
 @app.route('/community')
 def community_home():
