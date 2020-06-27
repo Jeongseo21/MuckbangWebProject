@@ -115,6 +115,15 @@ def delete_message():
   
   return jsonify({'result':'success', 'msg':'메세지 삭제에 성공하였습니다'})
 
+@app.route('/mypage/deleteMemo', methods=["POST"])
+def delete_memo():
+  memo_receive = request.form['memo_give']
+  
+  db.mypage.delete_one({'memo':memo_receive})
+  
+  return jsonify({'result':'success', 'msg':'메모 삭제에 성공하였습니다'})
+
+
 if __name__ == '__main__':  
    app.run('0.0.0.0',port=5000,debug=True)
 

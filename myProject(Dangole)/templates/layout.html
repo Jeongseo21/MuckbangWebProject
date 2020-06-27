@@ -153,7 +153,6 @@
                 let thumbnail = title_one['img_url']
                 let videoId = title_one['videoId']
                 
-                alert(title+thumbnail)
                 let temp_html = `<label for="restaurant" class="col-form-label">영상 이름 : </label>
                   <input type="text" class="form-control" name="title" value="${title}" disabled>
 
@@ -182,7 +181,7 @@
         var location = $('input[name=location]').val();
         var memo = $('textarea#message-text').val();
         
-        alert(title+thumbnail+videoId+restaurant+food_catg+location+memo)
+        
 
         $.ajax({
           type: "POST",
@@ -194,10 +193,13 @@
               let myVideo = response['myVideo'];
               
               alert("저장완료")
+              $('#exampleModal').modal('hide');
 
             }
           }
         })
+
+        
       }
       
       function show_memos(){
@@ -239,21 +241,21 @@
                           </span>
                       </a>
                     </header>
-                  <div class="card-content">
+                  <div class="memo-content">
                     <div class="content">
-                        #식당명 : ${restaurant}&nbsp&nbsp&nbsp
-                        #카테고리 : ${food_catg}&nbsp&nbsp&nbsp#위치 : ${location}<br>
+                        <h5>#식당명 : ${restaurant}&nbsp&nbsp&nbsp
+                        #카테고리 : ${food_catg}&nbsp&nbsp&nbsp
+                        #위치 : ${location}</h5>
                         <hr>
-                        ${memo_contents}<br>
-                        <img src="${thumbnail}" width=100px align="right">
+                          <img src="${thumbnail}" width=200px align="right">
+                          <h6>${memo_contents}</h5><br>
+                        
                         <br>
-                        <time datetime="2016-1-1">${created_at}</time>
+                        <time datetime="2016-1-1" class="card-subtitle mb-2 text-muted">${created_at}</time>
                     </div>
                   </div>
-                  <footer class="card-footer">
-                    <a href="#" class="card-footer-item">Save</a>
-                    <a href="#" class="card-footer-item">Edit</a>
-                    <a href="#" class="card-footer-item">Delete</a>
+                  <footer class="card-footer" align="right">
+                    <a href="#" class="card-footer-item" onclick="deleteMemo('${memo_contents}')">삭제</a>
                   </footer>
                   </div><br>`
                     // 7. #video-box에 temp_html을 붙입니다.
@@ -438,6 +440,22 @@
         });
       }
 
+      function deleteMemo(memo_contents){
+        $.ajax({
+        type: "POST",
+        url: "/mypage/deleteMemo",
+        data: { memo_give: memo_contents},
+        success: function (response) {
+            if (response['result'] == 'success') {
+								// 변경사항 저정, 새로고침
+                location.reload();
+            } else {
+                alert('메모 삭제에 실패했습니다.');
+            }
+          }
+        });
+      }
+
     </script>
     <style>
       .index{
@@ -534,6 +552,11 @@
       .wrap-mypage{
         width: 1000px;
         margin: auto;
+      }
+
+      .memo-content{
+        padding : 20px
+
       }
     </style>
   </head>
