@@ -1,0 +1,100 @@
+.index{
+  background-color : #D6D6D6;  
+}
+  
+.display-4{
+  width : 600px;
+  border-radius : 20px;
+  background-color:whitesmoke;
+  background-color: rgba( 255, 255, 255, 0.7 )
+}
+
+.btn{
+  font-family: 'Gamja Flower', cursive;
+}
+
+.middle{
+  border-radius : 10px;
+  width: 500px;
+  margin: auto;
+  font-family: 'Gamja Flower', cursive;
+  background-color: whitesmoke;
+  background-color: rgba( 255, 255, 255, 0.7 )
+}
+
+.lead{
+  background-color: whitesmoke;
+  background-color: rgba( 255, 255, 255, 0.7 )
+}
+
+.jumbotron-fluid{   
+  width: 1200px;
+  height: 796px;
+  margin: auto;
+  background-image: url("pizzamain.png");
+}
+.jumbotron-fluid1{    
+  width: 1500px;
+  margin: auto;
+  background-image: url("pizza-wide.jpg");  
+  }
+
+  .jumbotron-fluid2{
+  width: 1500px;
+  margin: auto;
+  background-image: url("pizza-wide.jpg");
+}
+
+.container{
+  font-family: 'Song Myung', serif;
+  font-size: x-large;
+  width: 600px;
+  margin: auto;
+}
+
+.card-deck{
+  width: 1100px;
+  margin:auto;
+}
+  
+.row{
+  width:1100px;
+  margin:auto;
+}
+  
+.area-edit {
+  display: none;
+}
+
+.wrap {
+  width: 800px;
+  margin: 10px auto;
+}
+
+#contents {
+  width: 800px;
+}
+
+.area-write {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.custom-card {
+  margin: 20px 0 20px 0;
+}
+
+#post-box {
+  display: none;
+}
+
+.wrap-mypage{
+  width: 1000px;
+  margin: auto;
+}
+
+.memo-content{
+  padding : 20px
+}
