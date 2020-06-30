@@ -1,199 +1,209 @@
 {% extends 'layout.html' %}
- 
+
 {% block content %}
-<div class="index" >
-    
-    <div class="jumbotron jumbotron-fluid1" align="center">
-        <div class="container">
-          <h1 class="display-4"><b>오늘의 먹방DJ</b></h1>
-          <p class="middle"><b>입짧은 햇님</b>의 먹방 몰아보기</p>
-          
+<div class="index">
+
+  <div class="jumbotron jumbotron-fluid1" align="center">
+    <div class="container">
+      <h1 class="display-4"><b>오늘의 먹방DJ</b></h1>
+      <p class="middle"><b>입짧은 햇님</b>의 먹방 몰아보기</p>
+
+    </div>
+  </div>
+  <br><br>
+
+  <div class="card_box" id="video-box" align="center">
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+          <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+          <p class="card-text"><small class="text-muted">TV-People</small></p>
+          <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+          <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">보관함에 저장</button>
         </div>
       </div>
-      <br><br>
-      
-      <div class="card_box" id="video-box" align="center">
-      <div class="card-deck">
-        <div class="card">
-          <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
-            <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
-            <p class="card-text"><small class="text-muted">TV-People</small></p>
-            <p class="card-text"><small class="text-muted">2020-05-26</small></p>
-            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
-          </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="https://i.ytimg.com/vi/0jRBdwKclFA/mqdefault.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">[현실리얼먹방]편스토랑 이영자��오리파워업덮밥��리뷰먹먹방방</h5>
-              <p class="card-text">현실먹방 #편스토랑 #오리파워업덮밥 #황남자</p>
-              <p class="card-text"><small class="text-muted">유치뽕짝황남자</small></p>
-              <p class="card-text"><small class="text-muted">2020-06-15</small></p>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
-              <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
-              <p class="card-text"><small class="text-muted">TV-People</small></p>
-              <p class="card-text"><small class="text-muted">2020-05-26</small></p>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
-            </div>
-          </div>
-      </div>
-      
-      <div class="card-deck">
-        <div class="card">
-          <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
-            <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
-            <p class="card-text"><small class="text-muted">TV-People</small></p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
-          </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
-              <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
-              <p class="card-text"><small class="text-muted">TV-People</small></p>
-              <p class="card-text"><small class="text-muted">2020-05-26</small></p>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
-              <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
-              <p class="card-text"><small class="text-muted">TV-People</small></p>
-              <p class="card-text"><small class="text-muted">2020-05-26</small></p>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
-            </div>
-          </div>
-      </div>
-      <div class="card-deck">
-        <div class="card">
-          <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
-          <div class="card-body">
-            <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
-            <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
-            <p class="card-text"><small class="text-muted">TV-People</small></p>
-            <p class="card-text"><small class="text-muted">2020-05-26</small></p>
-            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
-          </div>
-        </div>
-        <div class="card">
-            <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
-              <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
-              <p class="card-text"><small class="text-muted">TV-People</small></p>
-              <p class="card-text"><small class="text-muted">2020-05-26</small></p>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
-            </div>
-          </div>
-          <div class="card">
-            <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
-            <div class="card-body">
-              <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
-              <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
-              <p class="card-text"><small class="text-muted">TV-People</small></p>
-              <p class="card-text"><small class="text-muted">2020-05-26</small></p>
-              <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal" data-whatever="@mdo">보관함에 저장</button>
-            </div>
-          </div>
-      </div>
-      </div>
-      
-      
-      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="exampleModalLabel">식당 정보를 입력해주세요</h5>
-              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
-              <form>
-                <div class="form-group" id="title_save">
-                  <label for="restaurant" class="col-form-label">영상 제목 : </label>
-                  <input type="text" class="form-control" name="title">
-                </div>
-                <div class="form-group">
-                  <label for="restaurant" class="col-form-label">식당 이름 : </label>
-                  <input type="text" class="form-control" name="restaurant">
-                </div>
-                <div class="form-group">
-                  <label for="food_catg" class="col-form-label">분류 : </label> &nbsp;&nbsp;
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="food_catg" id="ko" value="한식">
-                    <label class="form-check-label" for="ko">한식</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="food_catg" id="chi" value="중식">
-                    <label class="form-check-label" for="chi">중식</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="food_catg" id="itali" value="양식">
-                    <label class="form-check-label" for="itali">양식</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="food_catg" id="japn" value="일식">
-                    <label class="form-check-label" for="japn">일식</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="food_catg" id="ko_sub" value="분식">
-                    <label class="form-check-label" for="ko_sub">분식</label>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="recipient-name" class="col-form-label">위치 : </label> &nbsp;&nbsp;
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="location" id="shinchon" value="신촌,홍대">
-                    <label class="form-check-label" for="shinchon">신촌,홍대</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="location" id="gangnam" value="강남,역삼">
-                    <label class="form-check-label" for="gangnam">강남,역삼</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="location" id="ilsan" value="일산,화정">
-                    <label class="form-check-label" for="ilsan">일산,화정</label>
-                  </div>
-                  <div class="form-check form-check-inline">
-                    <input class="form-check-input" type="radio" name="location" id="etc" value="기타">
-                    <label class="form-check-label" for="etc">기타</label>
-                  </div>
-                </div>
-                <div class="form-group">
-                  <label for="message-text" class="col-form-label">메모 : </label>
-                  <textarea class="form-control" id="message-text" placeholder="메모를 남겨보세요"></textarea>
-                </div>
-              </form>
-            </div>
-            <div class="modal-footer">
-              <button  class="btn btn-secondary" data-dismiss="modal">Close</button>
-              <button  type="submit" class="btn btn-primary" onclick="getInputValue()">저장</button>
-            </div>
-          </div>
+      <div class="card">
+        <img class="card-img-top" src="https://i.ytimg.com/vi/0jRBdwKclFA/mqdefault.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">[현실리얼먹방]편스토랑 이영자��오리파워업덮밥��리뷰먹먹방방</h5>
+          <p class="card-text">현실먹방 #편스토랑 #오리파워업덮밥 #황남자</p>
+          <p class="card-text"><small class="text-muted">유치뽕짝황남자</small></p>
+          <p class="card-text"><small class="text-muted">2020-06-15</small></p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">보관함에 저장</button>
         </div>
       </div>
-      
-      
-      
-     
+      <div class="card">
+        <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+          <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+          <p class="card-text"><small class="text-muted">TV-People</small></p>
+          <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">보관함에 저장</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+          <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+          <p class="card-text"><small class="text-muted">TV-People</small></p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">보관함에 저장</button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+          <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+          <p class="card-text"><small class="text-muted">TV-People</small></p>
+          <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">보관함에 저장</button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+          <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+          <p class="card-text"><small class="text-muted">TV-People</small></p>
+          <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">보관함에 저장</button>
+        </div>
+      </div>
+    </div>
+    <div class="card-deck">
+      <div class="card">
+        <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+          <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+          <p class="card-text"><small class="text-muted">TV-People</small></p>
+          <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">보관함에 저장</button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+          <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+          <p class="card-text"><small class="text-muted">TV-People</small></p>
+          <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">보관함에 저장</button>
+        </div>
+      </div>
+      <div class="card">
+        <img class="card-img-top" src="https://i.ytimg.com/vi/MZCohV5ZNus/mqdefault.jpg" alt="Card image cap">
+        <div class="card-body">
+          <h5 class="card-title">이영자】 제육볶음과 부대찌개까지 이영자와 제자들의 네버엔딩 먹방 | 전참시 | TVPP</h5>
+          <p class="card-text">lee young ja mukbang #이영자 #TVPP #전참시.</p>
+          <p class="card-text"><small class="text-muted">TV-People</small></p>
+          <p class="card-text"><small class="text-muted">2020-05-26</small></p>
+          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal"
+            data-whatever="@mdo">보관함에 저장</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">식당 정보를 입력해주세요</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group" id="title_save">
+              <label for="restaurant" class="col-form-label">영상 제목 : </label>
+              <input type="text" class="form-control" name="title">
+            </div>
+            <div class="form-group">
+              <label for="restaurant" class="col-form-label">식당 이름 : </label>
+              <input type="text" class="form-control" name="restaurant">
+            </div>
+            <div class="form-group">
+              <label for="food_catg" class="col-form-label">분류 : </label> &nbsp;&nbsp;
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="food_catg" id="ko" value="한식">
+                <label class="form-check-label" for="ko">한식</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="food_catg" id="chi" value="중식">
+                <label class="form-check-label" for="chi">중식</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="food_catg" id="itali" value="양식">
+                <label class="form-check-label" for="itali">양식</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="food_catg" id="japn" value="일식">
+                <label class="form-check-label" for="japn">일식</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="food_catg" id="ko_sub" value="분식">
+                <label class="form-check-label" for="ko_sub">분식</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="recipient-name" class="col-form-label">위치 : </label> &nbsp;&nbsp;
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="location" id="shinchon" value="신촌,홍대">
+                <label class="form-check-label" for="shinchon">신촌,홍대</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="location" id="gangnam" value="강남,역삼">
+                <label class="form-check-label" for="gangnam">강남,역삼</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="location" id="ilsan" value="일산,화정">
+                <label class="form-check-label" for="ilsan">일산,화정</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="location" id="etc" value="기타">
+                <label class="form-check-label" for="etc">기타</label>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="message-text" class="col-form-label">메모 : </label>
+              <textarea class="form-control" id="message-text" placeholder="메모를 남겨보세요"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="submit" class="btn btn-primary" onclick="getInputValue()">저장</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
 </div>
 <div>
-    <p>
-        
-    </p>
+  <p>
+
+  </p>
 </div>
 {% endblock %}
