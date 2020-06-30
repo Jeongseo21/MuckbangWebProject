@@ -4,7 +4,7 @@ from datetime import datetime, timedelta
 app = Flask(__name__)
 
 client = MongoClient('localhost', 27017)
-client = MongoClient('mongodb://test:test@13.209.82.223',27017)
+
 db = client.dbproject
 
 @app.route('/')
