@@ -1,23 +1,23 @@
 {% extends 'layout.html' %}
- 
+
 {% block content %}
-<div class="index" >
+<div class="index">
     <!-- <img src="{{ url_for('static', filename='list.jpg') }}"/> -->
     <div class="jumbotron jumbotron-fluid2" align="center">
         <div class="container">
-          <h1 class="display-4"><b>먹방 커뮤니티</b></h1>
-          <p class="middle">오늘 저녁 맛집탐방 어때요?</p>
-          
-        </div>
-      </div>
-      <br>
-      <br>
+            <h1 class="display-4"><b>먹방 커뮤니티</b></h1>
+            <p class="middle">오늘 저녁 맛집탐방 어때요?</p>
 
-      <div class="wrap">
+        </div>
+    </div>
+    <br>
+    <br>
+
+    <div class="wrap">
         <div class="header">
-          <p>
-          <button onclick="openclose()" type="button" class="btn btn-warning"><b>글 쓰기</b></button>
-        </p>  
+            <p>
+                <button onclick="openclose()" type="button" class="btn btn-warning"><b>글 쓰기</b></button>
+            </p>
         </div>
         <div id="post-box">
             <div class="area-write">
@@ -56,8 +56,8 @@
         </div>
         <br>
     </div>
-</body>
-     
+    </body>
+
 </div>
 
 {% endblock %}
